@@ -15,7 +15,7 @@ function getBooks() {
         <h2>${book.attributes.title}</h3>
         <h3>${book.attributes.author}</h3>
         <p>${book.attributes.summary}</p>
-        <p>${book.attributes.quotes.quote}</p>
+        <p>${book.attributes.quotes.length}</p>
         <button data-id=${book.id}>edit</button>
       </div>
       <br><br>`;
@@ -25,4 +25,11 @@ function getBooks() {
     })
 
   })
+
+
+// data[4]["attributes"]["quotes"][0]["quote"]
+// quote
+// data[4]["attributes"]["quotes"][1]["quote"]
+// quote
+
 }
