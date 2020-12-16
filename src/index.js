@@ -18,8 +18,8 @@ function getBooks() {
       <div data-id=${book.id}>
         <h2>${book.attributes.title}</h3>
         <h3>${book.attributes.author}</h3>
-        <h4>${book.attributes.summary}</h4>
-        <p>${quotes.join('<p></p>')}</p>
+        <p><b>Summary:</b> ${book.attributes.summary}</p>
+        <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
         <button data-id=${book.id}>edit</button>
       </div>
       <br><br>`;
@@ -37,3 +37,10 @@ function getBooks() {
 // quote
 
 }
+
+// for (const book of data) {
+//   console.log(book.attributes.title);
+//   for (const quote of book.attributes.quotes) {
+//     console.log(quote.attributes.quote);
+//   }
+// }
