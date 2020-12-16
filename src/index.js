@@ -2,6 +2,13 @@ const endPoint = "http://localhost:3000/api/v1/books"
 
 document.addEventListener('DOMContentLoaded', () => {
   getBooks()
+
+  const createBookForm = document.querySelector("#create-book-form")
+
+  // creating event listener on submit event in browser
+  createBookForm.addEventListener("submit", (e) =>
+  createFormHandler(e))
+
 })
 
 // Fetch is making a get request.
@@ -29,6 +36,20 @@ function getBooks() {
     })
 
   })
+}
+
+// grabbing all the values of my inputs
+  function createFormHandler(e){
+    e.preventDefault()
+    const titleInput = document.querySelector("#input-title").value
+    const authorInput = document.querySelector("#input-author").value
+    const summaryInput = document.querySelector("input-summary").value
+
+    // how to do quotes associated inside of here?
+
+  }
+
+
 
 
 // data[4]["attributes"]["quotes"][0]["quote"]
@@ -36,7 +57,6 @@ function getBooks() {
 // data[4]["attributes"]["quotes"][1]["quote"]
 // quote
 
-}
 
 // for (const book of data) {
 //   console.log(book.attributes.title);
