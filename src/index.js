@@ -46,6 +46,14 @@ function getBooks() {
     const summaryInput = document.querySelector("input-summary").value
 
     // how to do quotes associated inside of here?
+    // const quoteInput = document.querySelector()
+    postFetch(titleInput, authorInput, summaryInput)
+
+  }
+
+  // making post request to backend
+  function postFetch(title, author, summary){
+    console.log(title, author, summary)
 
   }
 
