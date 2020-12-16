@@ -10,12 +10,16 @@ function getBooks() {
   .then(response => response.json())
   .then(books => {
     books.data.forEach(book => {
+      const quotes = []
+      book.attributes.quotes.forEach(quote_info => {
+        quotes.push(quote_info.quote)
+      })
       const bookMarkup = `
       <div data-id=${book.id}>
         <h2>${book.attributes.title}</h3>
         <h3>${book.attributes.author}</h3>
-        <p>${book.attributes.summary}</p>
-        <p>${book.attributes.quotes.length}</p>
+        <h4>${book.attributes.summary}</h4>
+        <p>${quotes.join('<p></p>')}</p>
         <button data-id=${book.id}>edit</button>
       </div>
       <br><br>`;
