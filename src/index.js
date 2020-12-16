@@ -57,23 +57,29 @@ function getBooks() {
     fetch(endPoint, {
       // POST request
       method: "POST",
-      headers: {"Content-Type": "application/json"}
-      body: JSON.stringify(bodyData)
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        title: title,
+        author: author,
+        summary: summary
+        // quotes here somehow?
+      })
     })
     .then(response => response.json())
     .then(book => {
-      console.log(book)
-      // const bookData = book.data
-      // // render JSON response
-      // const bookMarkup = `
-      // <div data-id=${book.id}>
-      //   <h2>${book.attributes.title}</h3>
-      //   <h3>${book.attributes.author}</h3>
-      //   <p><b>Summary:</b> ${book.attributes.summary}</p>
-      //   <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
-      //   <button data-id=${book.id}>edit</button>
-      // </div>
-      // <br><br>`;
+      // console.log(book);
+      // data should now be an object, not an array.
+      const bookData = book.data.attributes
+      // render JSON response
+      const bookMarkup = `
+      <div data-id=${book.id}>
+        <h2>${book.title}</h3>
+        <h3>${book.author}</h3>
+        <p><b>Summary:</b> ${book.summary}</p>
+
+        <button data-id=${book.id}>edit</button>
+      </div>
+      <br><br>`;
 
       document.querySelector("#book-container").innerHTML += bookMarkup;
     })
