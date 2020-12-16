@@ -43,7 +43,7 @@ function getBooks() {
     e.preventDefault()
     const titleInput = document.querySelector("#input-title").value
     const authorInput = document.querySelector("#input-author").value
-    const summaryInput = document.querySelector("input-summary").value
+    const summaryInput = document.querySelector("#input-summary").value
 
     // how to do quotes associated inside of here?
     // const quoteInput = document.querySelector()
@@ -54,7 +54,29 @@ function getBooks() {
   // making post request to backend
   function postFetch(title, author, summary){
     console.log(title, author, summary)
+    fetch(endPoint, {
+      // POST request
+      method: "POST",
+      headers: {"Content-Type": "application/json"}
+      body: JSON.stringify(bodyData)
+    })
+    .then(response => response.json())
+    .then(book => {
+      console.log(book)
+      // const bookData = book.data
+      // // render JSON response
+      // const bookMarkup = `
+      // <div data-id=${book.id}>
+      //   <h2>${book.attributes.title}</h3>
+      //   <h3>${book.attributes.author}</h3>
+      //   <p><b>Summary:</b> ${book.attributes.summary}</p>
+      //   <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
+      //   <button data-id=${book.id}>edit</button>
+      // </div>
+      // <br><br>`;
 
+      document.querySelector("#book-container").innerHTML += bookMarkup;
+    })
   }
 
 
