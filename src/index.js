@@ -44,17 +44,20 @@ function getBooks() {
     const titleInput = document.querySelector("#input-title").value
     const authorInput = document.querySelector("#input-author").value
     const summaryInput = document.querySelector("#input-summary").value
-    const quoteInput = document.querySelector("#input-quote").value
+    // const quoteInput = document.querySelector("#input-quote").value
 
     // how to do quotes associated inside of here?
     // const quoteInput = document.querySelector()
-    postFetch(titleInput, authorInput, summaryInput, quoteInput)
+    postFetch(titleInput, authorInput, summaryInput)
+    // postFetch(titleInput, authorInput, summaryInput, quoteInput)
 
   }
 
   // making post request to backend
-  function postFetch(title, author, summary, quotes){
-    console.log(title, author, summary, quotes)
+  function postFetch(title, author, summary){
+    console.log(title, author, summary)
+  // function postFetch(title, author, summary, quote_attributes){
+  //   console.log(title, author, summary, quote_attributes)
     fetch(endPoint, {
       // POST request
       method: "POST",
@@ -63,9 +66,12 @@ function getBooks() {
         title: title,
         author: author,
         summary: summary,
-        quotes: [
-          {quote: quote}
-        ]
+        // quote_attributes: [
+        //   {
+        //     book_id: book_id,
+        //     quote: quote
+        //   }
+        // ]
         // quotes here somehow?
       })
     })
@@ -74,17 +80,17 @@ function getBooks() {
       // console.log(book);
       // data should now be an object, not an array
       const bookData = book.data
-      const quotes = []
-      book.attributes.quotes.forEach(quote_info => {
-        quotes.push(quote_info.quote)
-      })
+      // const quotes = []
+      // book.attributes.quotes.forEach(quote_info => {
+      //   quotes.push(quote_info.quote)
+      // })
       // render JSON response
       const bookMarkup = `
       <div data-id=${book.id}>
         <h2>${book.attributes.title}</h3>
         <h3>${book.attributes.author}</h3>
         <p><b>Summary:</b> ${book.attributes.summary}</p>
-        <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
+
         <button data-id=${book.id}>edit</button>
       </div>
       <br><br>`;
