@@ -86,6 +86,7 @@ function getBooks() {
         quotes.push(quote_info.quote)
       })
       // render JSON response
+      // removed book.attributes -- messing things up with quotes? 
       const bookMarkup = `
       <div data-id=${book.id}>
         <h2>${book.title}</h3>
