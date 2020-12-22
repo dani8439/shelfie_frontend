@@ -86,7 +86,7 @@ function getBooks() {
         quotes.push(quote_info.quote)
       })
       // render JSON response
-      // removed book.attributes -- messing things up with quotes? 
+      // removed book.attributes -- messing things up with quotes?
       const bookMarkup = `
       <div data-id=${book.id}>
         <h2>${book.title}</h3>
@@ -98,6 +98,29 @@ function getBooks() {
       <br><br>`;
 
       document.querySelector("#book-container").innerHTML += bookMarkup;
+    })
+  }
+
+  // Update
+  function updateFetch(title, author, summary, quote) {
+    console.log(title, author, summary, quote)
+    fetch(endpoint, {
+      method: 'PUT',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        title: title,
+        author: author,
+        summary: summary,
+        quote_attributes: [
+          {
+            quote: quote
+          }
+        ]
+      })
+    })
+    .then(response => response.json())
+    .then(book => {
+      console.log(book)
     })
   }
 
