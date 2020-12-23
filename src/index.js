@@ -5,9 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const createBookForm = document.querySelector("#create-book-form")
 
+  const updateBookForm = document.querySelector(" #book-container > div:nth-child(1) > button")
+
+
+
+  //*[@id="book-container"]/div[1]/button
+
+
   // creating event listener on submit event in browser
   createBookForm.addEventListener("submit", (e) =>
   createFormHandler(e))
+
+  // creating event listener on edit event in browser
+
+  updateBookForm.addEventListener("edit", (e) =>
+  function(){ alert("Edit World!")})
 
 })
 
@@ -27,7 +39,7 @@ function getBooks() {
         <h3>${book.attributes.author}</h3>
         <p><b>Summary:</b> ${book.attributes.summary}</p>
         <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
-        <button data-id=${book.id}>edit</button>
+        <button data-id=${book.id} class="edit-button">edit</button>
       </div>
       <br><br>`;
 
