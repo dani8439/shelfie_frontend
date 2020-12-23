@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const createBookForm = document.querySelector("#create-book-form")
 
-  const updateBookForm = document.querySelector(" #book-container > div:nth-child(1) > button")
-
+  // const updateBookForm = document.querySelector("#book-container > div:nth-child(1) > button")
+  // const updateBookContainer = document.querySelector("book-container > div:nth-child(1) > button")
 
 
   //*[@id="book-container"]/div[1]/button
@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // creating event listener on edit event in browser
 
-  updateBookForm.addEventListener("edit", (e) =>
-  function(){ alert("Edit World!")})
+  // updateBookContainer.addEventListener("edit", (e) =>
+  // editBookContainer(e))
 
 })
 
@@ -39,7 +39,7 @@ function getBooks() {
         <h3>${book.attributes.author}</h3>
         <p><b>Summary:</b> ${book.attributes.summary}</p>
         <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
-        <button data-id=${book.id} class="edit-button">edit</button>
+        <button data-id=${book.id} id="edit-button">edit</button>
       </div>
       <br><br>`;
 
@@ -66,8 +66,7 @@ function getBooks() {
   }
 
   // making post request to backend
-  // function postFetch(title, author, summary){
-  //   console.log(title, author, summary)
+
   function postFetch(title, author, summary, quote){
     console.log(title, author, summary, quote)
     fetch(endPoint, {
@@ -83,13 +82,13 @@ function getBooks() {
             quote: quote
           }
         ]
-        // quotes here somehow?
       })
     })
     .then(response => response.json())
     .then(book => {
       console.log(book);
       console.log(book.title);
+      console.log(book.quotes);
       // data should now be an object, not an array
       // const bookData = book.data
       const quotes = []
