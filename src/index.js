@@ -3,7 +3,9 @@ const endPoint = "http://localhost:3000/api/v1/books"
 document.addEventListener('DOMContentLoaded', () => {
   getBooks()
 
-  const createBookForm = document.querySelector("#create-book-form")
+  const createBookForm = document.querySelector("#create-book-form");
+
+  // let bookEdits = document.querySelectorAll(".edit-button");
 
   // const updateBookForm = document.querySelector("#book-container > div:nth-child(1) > button")
   // const updateBookContainer = document.querySelector("book-container > div:nth-child(1) > button")
@@ -104,7 +106,7 @@ function getBooks() {
         <h3>${book.author}</h3>
         <p><b>Summary:</b> ${book.summary}</p>
         <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
-        <button data-id=${book.id}>edit</button>
+        <button data-id=${book.id} id="edit-button">edit</button>
       </div>
       <br><br>`;
 
