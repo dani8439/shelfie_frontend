@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const createBookForm = document.querySelector("#create-book-form");
 
-  // let bookEdits = document.querySelectorAll(".edit-button");
+  let bookEdits = document.querySelectorAll(".edit-button");
 
   // const updateBookForm = document.querySelector("#book-container > div:nth-child(1) > button")
   // const updateBookContainer = document.querySelector("book-container > div:nth-child(1) > button")
@@ -79,7 +79,7 @@ function getBooks() {
         title: title,
         author: author,
         summary: summary,
-        quote_attributes: [
+        quotes_attributes: [
           {
             quote: quote,
           }
@@ -115,6 +115,10 @@ function getBooks() {
   }
 
   // Update
+  function updateFetch() {
+    document.getElementById("edit-button").click();
+  }
+
   function updateFetch(title, author, summary, quote) {
     console.log(title, author, summary, quote)
     fetch(endpoint, {
@@ -124,7 +128,7 @@ function getBooks() {
         title: title,
         author: author,
         summary: summary,
-        quote_attributes: [
+        quotes_attributes: [
           {
             quote: quote
           }
@@ -137,13 +141,6 @@ function getBooks() {
     })
   }
 
-
-
-
-// data[4]["attributes"]["quotes"][0]["quote"]
-// quote
-// data[4]["attributes"]["quotes"][1]["quote"]
-// quote
 
 
 // for (const book of data) {
