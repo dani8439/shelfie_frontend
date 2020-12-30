@@ -79,7 +79,7 @@ function getBooks() {
         title: title,
         author: author,
         summary: summary,
-        quote_attributes: [
+        quotes_attributes: [
           {
             quote: quote
           }
