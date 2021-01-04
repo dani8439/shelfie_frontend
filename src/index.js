@@ -19,25 +19,30 @@ function getBooks() {
   .then(response => response.json())
   .then(books => {
     books.data.forEach(book => {
-      const quotes = []
-      book.attributes.quotes.forEach(quote_info => {
-        quotes.push(quote_info.quote)
-      })
-      const bookMarkup = `
-      <div data-id=${book.id}>
-        <h2>${book.attributes.title}</h3>
-        <h3>${book.attributes.author}</h3>
-        <p><b>Summary:</b> ${book.attributes.summary}</p>
-        <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
-        <button data-id=${book.id} id="edit-button">edit</button>
-      </div>
-      <br><br>`;
-
-      document.querySelector('#book-container').innerHTML += bookMarkup
+      render(book)
 
     })
 
   })
+}
+
+function render(book) {
+  const quotes = []
+  book.attributes.quotes.forEach(quote_info => {
+    quotes.push(quote_info.quote)
+  })
+  const bookMarkup = `
+  <div data-id=${book.id}>
+    <h2>${book.attributes.title}</h3>
+    <h3>${book.attributes.author}</h3>
+    <p><b>Summary:</b> ${book.attributes.summary}</p>
+    <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
+    <button data-id=${book.id} id="edit-button">edit</button>
+  </div>
+  <br><br>`;
+
+  document.querySelector('#book-container').innerHTML += bookMarkup
+
 }
 
 // grabbing all the values of my inputs
