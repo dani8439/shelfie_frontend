@@ -22,7 +22,6 @@ function getBooks() {
       render(book)
 
     })
-
   })
 }
 
@@ -83,25 +82,28 @@ function render(book) {
       console.log(book.title);
       console.log(book.quotes);
       // data should now be an object, not an array
+      const bookData = book.data // throws an error with attributes.
+      // throws a typeerror.
+      render(bookData)
 
-      const quotes = []
-
-      book.quotes.forEach(quote_info => {
-        quotes.push(quote_info.quote)
-      })
-      // render JSON response
-      // removed book.attributes -- messing things up with quotes?
-      const bookMarkup = `
-      <div data-id=${book.id}>
-        <h2>${book.title}</h3>
-        <h3>${book.author}</h3>
-        <p><b>Summary:</b> ${book.summary}</p>
-        <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
-        <button data-id=${book.id} id="edit-button">edit</button>
-      </div>
-      <br><br>`;
-
-      document.querySelector("#book-container").innerHTML += bookMarkup;
+      // const quotes = []
+      //
+      // book.quotes.forEach(quote_info => {
+      //   quotes.push(quote_info.quote)
+      // })
+      // // render JSON response
+      // // removed book.attributes -- messing things up with quotes?
+      // const bookMarkup = `
+      // <div data-id=${book.id}>
+      //   <h2>${book.title}</h3>
+      //   <h3>${book.author}</h3>
+      //   <p><b>Summary:</b> ${book.summary}</p>
+      //   <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
+      //   <button data-id=${book.id} id="edit-button">edit</button>
+      // </div>
+      // <br><br>`;
+      //
+      // document.querySelector("#book-container").innerHTML += bookMarkup;
     })
   }
 
