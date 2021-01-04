@@ -1,27 +1,15 @@
 const endPoint = "http://localhost:3000/api/v1/books"
 
 document.addEventListener('DOMContentLoaded', () => {
+  // fetch and load books
   getBooks()
 
   const createBookForm = document.querySelector("#create-book-form");
-
-  let bookEdits = document.querySelectorAll(".edit-button");
-
-  // const updateBookForm = document.querySelector("#book-container > div:nth-child(1) > button")
-  // const updateBookContainer = document.querySelector("book-container > div:nth-child(1) > button")
-
-
-  //*[@id="book-container"]/div[1]/button
-
 
   // creating event listener on submit event in browser
   createBookForm.addEventListener("submit", (e) =>
   createFormHandler(e))
 
-  // creating event listener on edit event in browser
-
-  // updateBookContainer.addEventListener("edit", (e) =>
-  // editBookContainer(e))
 
 })
 
@@ -60,9 +48,7 @@ function getBooks() {
     const summaryInput = document.querySelector("#input-summary").value
     const quoteInput = document.querySelector("#input-quote").value
 
-    // how to do quotes associated inside of here?
-    // const quoteInput = document.querySelector()
-    // postFetch(titleInput, authorInput, summaryInput)
+
     postFetch(titleInput, authorInput, summaryInput, quoteInput)
 
   }
@@ -92,9 +78,9 @@ function getBooks() {
       console.log(book.title);
       console.log(book.quotes);
       // data should now be an object, not an array
-      // const bookData = book.data
+
       const quotes = []
-      // console.log(bookData)
+
       book.quotes.forEach(quote_info => {
         quotes.push(quote_info.quote)
       })
@@ -119,27 +105,27 @@ function getBooks() {
     document.getElementById("edit-button").click();
   }
 
-  function updateFetch(title, author, summary, quote) {
-    console.log(title, author, summary, quote)
-    fetch(endpoint, {
-      method: 'PUT',
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        title: title,
-        author: author,
-        summary: summary,
-        quotes_attributes: [
-          {
-            quote: quote
-          }
-        ]
-      })
-    })
-    .then(response => response.json())
-    .then(book => {
-      console.log(book)
-    })
-  }
+  // function updateFetch(title, author, summary, quote) {
+  //   console.log(title, author, summary, quote)
+  //   fetch("http://localhost:3000/api/v1/books/`book.id`/edit", {
+  //     method: 'PUT',
+  //     headers: {"Content-Type": "application/json"},
+  //     body: JSON.stringify({
+  //       title: title,
+  //       author: author,
+  //       summary: summary,
+  //       quotes_attributes: [
+  //         {
+  //           quote: quote
+  //         }
+  //       ]
+  //     })
+  //   })
+  //   .then(response => response.json())
+  //   .then(book => {
+  //     console.log(book)
+  //   })
+  // }
 
 
 
