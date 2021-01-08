@@ -1,27 +1,15 @@
 const endPoint = "http://localhost:3000/api/v1/books"
 
 document.addEventListener('DOMContentLoaded', () => {
+  // fetch and load books
   getBooks()
 
   const createBookForm = document.querySelector("#create-book-form");
-
-  let bookEdits = document.querySelectorAll(".edit-button");
-
-  // const updateBookForm = document.querySelector("#book-container > div:nth-child(1) > button")
-  // const updateBookContainer = document.querySelector("book-container > div:nth-child(1) > button")
-
-
-  //*[@id="book-container"]/div[1]/button
-
 
   // creating event listener on submit event in browser
   createBookForm.addEventListener("submit", (e) =>
   createFormHandler(e))
 
-  // creating event listener on edit event in browser
-
-  // updateBookContainer.addEventListener("edit", (e) =>
-  // editBookContainer(e))
 
 })
 
@@ -31,26 +19,31 @@ function getBooks() {
   .then(response => response.json())
   .then(books => {
     books.data.forEach(book => {
-      const quotes = []
-      book.attributes.quotes.forEach(quote_info => {
-        quotes.push(quote_info.quote)
-      })
-      const bookMarkup = `
-      <div data-id=${book.id}>
-        <h2>${book.attributes.title}</h3>
-        <h3>${book.attributes.author}</h3>
-        <p><b>Summary:</b> ${book.attributes.summary}</p>
-        <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
-        <button data-id=${book.id} id="edit-button">edit</button>
-      </div>
-      <br><br>`;
-
-      document.querySelector('#book-container').innerHTML += bookMarkup
+      render(book)
 
     })
-
   })
 }
+
+function render(book) {
+  const quotes = []
+  book.attributes.quotes.forEach(quote_info => {
+    quotes.push(quote_info.quote)
+  })
+  const bookMarkup = `
+  <div data-id=${book.id}>
+    <h2>${book.attributes.title}</h3>
+    <h3>${book.attributes.author}</h3>
+    <p><b>Summary:</b> ${book.attributes.summary}</p>
+    <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
+    <button data-id=${book.id} id="edit-button">edit</button>
+  </div>
+  <br><br>`;
+
+  document.querySelector('#book-container').innerHTML += bookMarkup
+
+}
+
 
 // grabbing all the values of my inputs
   function createFormHandler(e){
@@ -60,9 +53,7 @@ function getBooks() {
     const summaryInput = document.querySelector("#input-summary").value
     const quoteInput = document.querySelector("#input-quote").value
 
-    // how to do quotes associated inside of here?
-    // const quoteInput = document.querySelector()
-    // postFetch(titleInput, authorInput, summaryInput)
+
     postFetch(titleInput, authorInput, summaryInput, quoteInput)
 
   }
@@ -71,7 +62,7 @@ function getBooks() {
 
   function postFetch(title, author, summary, quote){
     console.log(title, author, summary, quote)
-    fetch(endPoint, {
+     fetch(endPoint, {
       // POST request
       method: "POST",
       headers: {"Content-Type": "application/json"},
@@ -88,29 +79,15 @@ function getBooks() {
     })
     .then(response => response.json())
     .then(book => {
-      console.log(book);
-      console.log(book.title);
-      console.log(book.quotes);
-      // data should now be an object, not an array
-      // const bookData = book.data
-      const quotes = []
-      // console.log(bookData)
-      book.quotes.forEach(quote_info => {
-        quotes.push(quote_info.quote)
-      })
-      // render JSON response
-      // removed book.attributes -- messing things up with quotes?
-      const bookMarkup = `
-      <div data-id=${book.id}>
-        <h2>${book.title}</h3>
-        <h3>${book.author}</h3>
-        <p><b>Summary:</b> ${book.summary}</p>
-        <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
-        <button data-id=${book.id} id="edit-button">edit</button>
-      </div>
-      <br><br>`;
 
-      document.querySelector("#book-container").innerHTML += bookMarkup;
+      // console.log(book.data);
+      // console.log(book.data.attributes.title);
+      // console.log(book.data.attributes.quotes);
+      // data should now be an object, not an array
+      const bookData = book.data // throws an error with attributes.
+      // throws a typeerror.
+      render(bookData)
+
     })
   }
 
@@ -119,27 +96,27 @@ function getBooks() {
     document.getElementById("edit-button").click();
   }
 
-  function updateFetch(title, author, summary, quote) {
-    console.log(title, author, summary, quote)
-    fetch(endpoint, {
-      method: 'PUT',
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        title: title,
-        author: author,
-        summary: summary,
-        quotes_attributes: [
-          {
-            quote: quote
-          }
-        ]
-      })
-    })
-    .then(response => response.json())
-    .then(book => {
-      console.log(book)
-    })
-  }
+  // function updateFetch(title, author, summary, quote) {
+  //   console.log(title, author, summary, quote)
+  //   fetch("http://localhost:3000/api/v1/books/`book.id`/edit", {
+  //     method: 'PUT',
+  //     headers: {"Content-Type": "application/json"},
+  //     body: JSON.stringify({
+  //       title: title,
+  //       author: author,
+  //       summary: summary,
+  //       quotes_attributes: [
+  //         {
+  //           quote: quote
+  //         }
+  //       ]
+  //     })
+  //   })
+  //   .then(response => response.json())
+  //   .then(book => {
+  //     console.log(book)
+  //   })
+  // }
 
 
 
