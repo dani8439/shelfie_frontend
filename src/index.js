@@ -19,7 +19,9 @@ function getBooks() {
   .then(response => response.json())
   .then(books => {
     books.data.forEach(book => {
-      render(book)
+      // render(book)
+      const newBook = new Book(book);
+      document.querySelector('#book-container').innerHTML += newBook.renderBookItem();
 
     })
   })
