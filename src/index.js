@@ -20,8 +20,8 @@ function getBooks() {
   .then(books => {
     books.data.forEach(book => {
       // render(book)
-      const newBook = new Book(book);
-      document.querySelector('#book-container').innerHTML += newBook.renderBookItem();
+      const newBook = new Book(book.id, book.attributes);
+      document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
 
     })
   })
@@ -82,13 +82,18 @@ function render(book) {
     .then(response => response.json())
     .then(book => {
 
-      // console.log(book.data);
+      console.log(book.data);
       // console.log(book.data.attributes.title);
       // console.log(book.data.attributes.quotes);
       // data should now be an object, not an array
-      const bookData = book.data // throws an error with attributes.
-      // throws a typeerror.
+      // const bookData = book.data // throws an error with attributes.
+      // // throws a typeerror.
+      // render(bookData)
+      // const newBook = new Book(book.data.id, book.data.attributes)
+      const bookData = book.data
       render(bookData)
+
+      document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
 
     })
   }

@@ -1,13 +1,13 @@
 class Book {
-  constructor(data) {
-    this.id = data.id;
-    this.title = data.title;
-    this.author = data.author;
-    this.summary = data.summary
+  constructor(id, bookAttributes) {
+    this.id = id;
+    this.title = bookAttributes.title;
+    this.author = bookAttributes.author;
+    this.summary = bookAttributes.summary
     Book.all.push(this)
   }
 
-  renderBookItem() {
+  renderBookCard() {
     return `
     <li>
       <h3>${this.title}
