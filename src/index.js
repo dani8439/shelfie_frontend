@@ -91,7 +91,8 @@ function render(book) {
       // render(bookData)
       // const newBook = new Book(book.data.id, book.data.attributes)
       const bookData = book.data
-      render(bookData)
+      // render(bookData)
+      let newBook = new Book(bookData, bookData.attributes)
 
       document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
 
