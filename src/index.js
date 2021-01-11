@@ -83,20 +83,13 @@ function render(book) {
     .then(book => {
 
       console.log(book.data);
-      // console.log(book.data.attributes.title);
-      // console.log(book.data.attributes.quotes);
-      // data should now be an object, not an array
-      // const bookData = book.data // throws an error with attributes.
-      // // throws a typeerror.
-      // render(bookData)
-      // const newBook = new Book(book.data.id, book.data.attributes)
-      const bookData = book.data
-      // render(bookData)
+      const bookData = book.data;
       let newBook = new Book(bookData, bookData.attributes)
 
       document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
 
     })
+    // .catch(err => console.log(err))
   }
 
   // Update
