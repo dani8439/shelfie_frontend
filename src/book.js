@@ -25,6 +25,10 @@ class Book {
     </div>
     <br><br>`
   }
+
+  static findById(id) {
+    return this.all.find(book => book.id === id);
+  }
 }
 
 Book.all = [];
