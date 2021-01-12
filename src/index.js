@@ -9,12 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // creating event listener on submit event in browser
   createBookForm.addEventListener("submit", (e) =>
   createFormHandler(e))
+
+  // listen for 'click' event on book container
   const bookContainer = document.querySelector('#book-container')
   bookContainer.addEventListener('click', e => {
-    const id = parseInt(e.target.dataset.id)
+    // console.log('clicked');
+    const id = parseInt(e.target.dataset.id);
+    console.log(id);
+    // debugger
     const book = Book.findById(id);
-    // console.log(book);
-    document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
+    console.log(book);
   });
 
 })
