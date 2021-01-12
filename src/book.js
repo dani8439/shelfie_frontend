@@ -23,7 +23,7 @@ class Book {
 
       <button data-id=${this.id} id="edit-button">edit</button>
     </div>
-    <br><br>`
+    <br><br>`;
   }
 
   static findById(id) {
