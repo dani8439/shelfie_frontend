@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   bookContainer.addEventListener('click', e => {
     // console.log('clicked');
     const id = parseInt(e.target.dataset.id);
+    // id is a number
     console.log(id);
     // debugger
     const book = Book.findById(id);
