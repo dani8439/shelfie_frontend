@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   bookContainer.addEventListener('click', e => {
     const id = parseInt(e.target.dataset.id)
     const book = Book.findById(id);
-    console.log(book);
+    // console.log(book);
+    document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
   });
 
 })
