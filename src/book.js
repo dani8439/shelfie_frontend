@@ -26,6 +26,9 @@ class Book {
     <br><br>`;
   }
 
+  static findById(id) {
+    return this.all.find(book => book.id === id);
+  }
 
   renderUpdateForm() {
     return `
@@ -48,10 +51,6 @@ class Book {
 
     </form>
     `;
-  }
-
-  static findById(id) {
-    return this.all.find(book => book.id === id);
   }
 }
 
