@@ -47,7 +47,10 @@ class Book {
       <textarea id="input-summary" name="summary" rows="8" cols="80" value="">${this.summary}</textarea>
       <br><br>
 
-      <input id='edit-button' type="submit" name="submit" value="Edit Book" class="submit">
+      <label>Quotes</label>
+      <textarea id="input-quote" name="quote" rows="8" cols="80" value="">${this.quotes}</textarea>
+      <br><br>
+      <input id='edit-button' type="submit" name="submit" value="Save Book" class="submit">
 
     </form>
     `;

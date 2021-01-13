@@ -13,15 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // listen for 'click' event on book container
   const bookContainer = document.querySelector('#book-container')
   bookContainer.addEventListener('click', e => {
-    // console.log('clicked');
-    const id = parseInt(e.target.dataset.id).toString();
-    // id is a number
-    console.log(id);
-    // debugger
+    // do not need to parseInt as already a string
+    const id = e.target.dataset.id;
     const book = Book.findById(id);
     // debugger
     console.log(book);
-    document.querySelector('#update').innerHTML = book.renderUpdateForm();
+    document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
   });
 
 })
