@@ -46,16 +46,17 @@ function getBooks() {
     const summaryInput = document.querySelector("#input-summary").value
     const quoteInput = document.querySelector("#input-quote").value
     const quoteInput2 = document.querySelector("#input-quote2").value
+    const quoteInput3 = document.querySelector("#input-quote3").value
 
 
-    postFetch(titleInput, authorInput, summaryInput, quoteInput, quoteInput2)
+    postFetch(titleInput, authorInput, summaryInput, quoteInput, quoteInput2, quoteInput3)
 
   }
 
   // making post request to backend
 
-  function postFetch(title, author, summary, quote, quote2){
-    console.log(title, author, summary, quote, quote2)
+  function postFetch(title, author, summary, quote, quote2, quote3){
+    console.log(title, author, summary, quote, quote2, quote3)
      fetch(endPoint, {
       // POST request
       method: "POST",
@@ -70,6 +71,9 @@ function getBooks() {
           },
           {
             quote: quote2
+          },
+          {
+            quote: quote3
           }
         ]
       })

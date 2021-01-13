@@ -4,7 +4,10 @@ class Book {
     this.title = bookAttributes.title;
     this.author = bookAttributes.author;
     this.summary = bookAttributes.summary
+    // this.quote_info
     this.quotes = bookAttributes.quotes
+    console.log(this.quotes)
+    // for each inside of here.
     Book.all.push(this)
     // console.log(this);
   }
@@ -29,6 +32,7 @@ class Book {
   static findById(id) {
     return this.all.find(book => book.id === id);
   }
+
 
   renderUpdateForm() {
     const quotes = []
