@@ -31,6 +31,10 @@ class Book {
   }
 
   renderUpdateForm() {
+    const quotes = []
+    this.quotes.forEach(quote_info => {
+      quotes.push(quote_info.quote)
+    })
     return `
     <form data-id=${this.id} >
       <h3>Edit a Book!</h3>
@@ -48,7 +52,7 @@ class Book {
       <br><br>
 
       <label>Quotes</label>
-      <textarea id="input-quote" name="quote" rows="8" cols="80" value="">${this.quotes}</textarea>
+      <textarea id="input-quote" name="quote" rows="8" cols="80" value="">${quotes.join('<p></p>')}</textarea>
       <br><br>
       <input id='edit-button' type="submit" name="submit" value="Save Book" class="submit">
 
