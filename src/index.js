@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
   });
 
+  // listen for the submit event of the edit form and handle the data
+  document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
+
 })
 
 // Fetch is making a get request.
@@ -91,19 +94,65 @@ function getBooks() {
     // .catch(err => console.log(err))
   }
 
-  // Update
+  // Grab all the info from the updated Book
   function updateFormHandler(e) {
     e.preventDefault();
     const id = e.target.dataset.id;
     const book = Book.findById(id);
     const title = e.target.querySelector("#input-title").value;
-    const author = e.target.querySelector("input-author").value;
+    const author = e.target.querySelector("#input-author").value;
     const summary = e.target.querySelector("#input-summary").value;
-    const quotes = e.target.querySelector("#input-quote").value;
-    patchBook(book, title, summary, quote)
+    // const quotes = e.target.querySelector("#input-quote").value;
+    patchBook(book, title, summary)
+    // patchBook(book, title, summary, quote)
   }
 
+  function patchBook(title, author, summary) {
+    console.log(title, author, summary)
+    fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type' : 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        title: title,
+        author: author,
+        summary: summary,
+        // quote_attributes: [
+        //   {
+        //     quote: quote
+        //   }
+        // ]
+      })
+    })
+    .then(res => res.json())
+    .then(updatedBook => console.log(updatedBook));
 
+  }
+
+  // function patchBook(title, author, summary, quote) {
+  //   console.log(title, author, summary, quote)
+  //   fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type' : 'application/json',
+  //       Accept: 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       title: title,
+  //       author: author,
+  //       summary: summary,
+  //       quote_attributes: [
+  //         {
+  //           quote: quote
+  //         }
+  //       ]
+  //     })
+  //   })
+  //   .then(res => res.json())
+  //   .then(updatedBook => console.log(updatedBook));
+  // }
 
   // function updateFetch(title, author, summary, quote) {
   //   console.log(title, author, summary, quote)

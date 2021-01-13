@@ -13,7 +13,7 @@ class Book {
     // this.quotes = {
     //   Book.all.forEach( arrowFunction => { })
     // }
-    console.log(this.quotes)
+    // console.log(this.quotes)
     // for each inside of here.
     Book.all.push(this)
     // console.log(this);
