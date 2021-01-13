@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const id = e.target.dataset.id;
     const book = Book.findById(id);
     // debugger
-    console.log(book);
+    // console.log(book);
     document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
   });
 
@@ -92,9 +92,18 @@ function getBooks() {
   }
 
   // Update
-  function updateFetch() {
-    document.getElementById("edit-button").click();
+  function updateFormHandler(e) {
+    e.preventDefault();
+    const id = e.target.dataset.id;
+    const book = Book.findById(id);
+    const title = e.target.querySelector("#input-title").value;
+    const author = e.target.querySelector("input-author").value;
+    const summary = e.target.querySelector("#input-summary").value;
+    const quotes = e.target.querySelector("#input-quote").value;
+    patchBook(book, title, summary, quote)
   }
+
+
 
   // function updateFetch(title, author, summary, quote) {
   //   console.log(title, author, summary, quote)

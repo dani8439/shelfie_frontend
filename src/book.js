@@ -3,9 +3,16 @@ class Book {
     this.id = id;
     this.title = bookAttributes.title;
     this.author = bookAttributes.author;
-    this.summary = bookAttributes.summary
+    this.summary = bookAttributes.summary;
     // this.quote_info
     this.quotes = bookAttributes.quotes
+    // this.quotes = {
+    //
+    // }
+
+    // this.quotes = {
+    //   Book.all.forEach( arrowFunction => { })
+    // }
     console.log(this.quotes)
     // for each inside of here.
     Book.all.push(this)
@@ -32,6 +39,10 @@ class Book {
   static findById(id) {
     return this.all.find(book => book.id === id);
   }
+
+  // static renderQuotes(bookAttributes) {
+  //   return bookAttributes.quotes
+  // }
 
 
   renderUpdateForm() {
