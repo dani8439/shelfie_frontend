@@ -60,6 +60,7 @@ class Book {
     }
   }
 
+
   // this.signatories.forEach(function(signatory){
   //     let message = `${this.closing[signatory]}, ${signatory}`
   //     console.log(message)
@@ -68,6 +69,8 @@ class Book {
     console.log(quote.id, quote.quote)
   })
 
+  Book.all.forEach(book => (book.quotes.forEach(function(quote) { console.log( quote.id, quote.quote)})))
+  Book.all.forEach(book => book.quotes.forEach(function(quote) { console.log(book.title, quote.id, quote.quote)}))
 
   renderUpdateForm() {
     const quotes = []
