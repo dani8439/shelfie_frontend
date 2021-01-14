@@ -106,11 +106,11 @@ function getBooks() {
     const author = e.target.querySelector("#input-author").value;
     const summary = e.target.querySelector("#input-summary").value;
     // const quotes = e.target.querySelector("#input-quote").value;
-    patchBook(book, title, summary)
+    patchBook(book, title, author, summary)
     // patchBook(book, title, summary, quote)
   }
 
-  function patchBook(title, author, summary) {
+  function patchBook(book, title, author, summary) {
     console.log(title, author, summary)
     fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
       method: 'PATCH',
