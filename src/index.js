@@ -50,16 +50,18 @@ function getBooks() {
     const quoteInput = document.querySelector("#input-quote").value
     const quoteInput2 = document.querySelector("#input-quote2").value
     const quoteInput3 = document.querySelector("#input-quote3").value
+    const quoteInput4 = document.querySelector("#input-quote4").value
+    const quoteInput5 = document.querySelector("#input-quote5").value
 
 
-    postFetch(titleInput, authorInput, summaryInput, quoteInput, quoteInput2, quoteInput3)
+    postFetch(titleInput, authorInput, summaryInput, quoteInput, quoteInput2, quoteInput3, quoteInput4, quoteInput5)
 
   }
 
   // making post request to backend
 
-  function postFetch(title, author, summary, quote, quote2, quote3){
-    console.log(title, author, summary, quote, quote2, quote3)
+  function postFetch(title, author, summary, quote, quote2, quote3, quote4, quote5){
+    console.log(title, author, summary, quote, quote2, quote3, quote4, quote5)
      fetch(endPoint, {
       // POST request
       method: "POST",
@@ -77,6 +79,12 @@ function getBooks() {
           },
           {
             quote: quote3
+          }
+          {
+            quote: quote4
+          },
+          {
+            quote: quote5
           }
         ]
       })
@@ -101,17 +109,22 @@ function getBooks() {
     const book = Book.findById(id);
     console.log(book);
     // debugger;
-    // book is defined despite console saying it is not??
     const title = e.target.querySelector("#input-title").value;
     const author = e.target.querySelector("#input-author").value;
     const summary = e.target.querySelector("#input-summary").value;
-    // const quotes = e.target.querySelector("#input-quote").value;
+    // const quote = e.target.querySelector("#input-quote").value;
+    // const quote2 = e.target.querySelector("#input-quote2").value;
+    // const quote3 = e.target.querySelector("#input-quote3").value;
+    // const quote4 = e.target.querySelector("#input-quote4").value;
+    // const quote5 = e.target.querySelector("#input-quote5").value;
     patchBook(book, title, author, summary)
-    // patchBook(book, title, summary, quote)
+    // patchBook(book, title, author, summary, quote, quote2, quote3, quote4, quote5)
   }
 
   function patchBook(book, title, author, summary) {
+    // function patchBook(book, title, author, summary, quote, quote2, quote3, quote4, quote5)
     console.log(title, author, summary)
+    // console.log(title, author, summary, quote, quote2, quote3, quote4, quote5)
     fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
       method: 'PATCH',
       headers: {
@@ -125,7 +138,19 @@ function getBooks() {
         // quote_attributes: [
         //   {
         //     quote: quote
-        //   }
+        //   },
+        //  {
+        //     quote: quote2
+        //  },
+        //  {
+        //    quote: quote3
+        //  },
+        //  {
+        //    quote: quote4
+        //  },
+        //  {
+        //    quote: quote5
+        //  }
         // ]
       })
     })
@@ -133,29 +158,6 @@ function getBooks() {
     .then(updatedBook => console.log(updatedBook));
 
   }
-
-  // function patchBook(title, author, summary, quote) {
-  //   console.log(title, author, summary, quote)
-  //   fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type' : 'application/json',
-  //       Accept: 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       title: title,
-  //       author: author,
-  //       summary: summary,
-  //       quote_attributes: [
-  //         {
-  //           quote: quote
-  //         }
-  //       ]
-  //     })
-  //   })
-  //   .then(res => res.json())
-  //   .then(updatedBook => console.log(updatedBook));
-  // }
 
 
 // for (const book of data) {

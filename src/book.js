@@ -4,7 +4,6 @@ class Book {
     this.title = bookAttributes.title;
     this.author = bookAttributes.author;
     this.summary = bookAttributes.summary;
-    // this.quote_info
     this.quotes = bookAttributes.quotes
     // this.quotes = {
     //   Book.all.forEach( arrowFunction => { })
@@ -28,6 +27,7 @@ class Book {
       `</div>` +
       `<br><br>`;
       return html_string;
+      `<p></p>`
 
     // const quotes = []
     // this.quotes.forEach(quote_info => {
@@ -80,7 +80,7 @@ class Book {
       <br><br>
 
       <label>Quotes</label>
-      <textarea id="input-quote" name="quote" rows="8" cols="80" value="">${quotes.join('<p></p>')}</textarea>
+      <textarea id="input-quote" name="quote" rows="5" cols="80" value="">${quotes.join('<p></p>')}</textarea>
       <br><br>
       <input id='edit-button' type="submit" name="submit" value="Save Book" class="submit">
 
