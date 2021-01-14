@@ -29,6 +29,9 @@ class Book {
       return html_string;
       `<p></p>`
 
+      // want an individual <p> for each quote in the array. Do not need the id, but need to pass that in order to edit.
+      // `<p>${this.quotes.quote}</p>`
+
     // const quotes = []
     // this.quotes.forEach(quote_info => {
     //   quotes.push(quote_info.quote)
@@ -56,6 +59,14 @@ class Book {
       }
     }
   }
+
+  // this.signatories.forEach(function(signatory){
+  //     let message = `${this.closing[signatory]}, ${signatory}`
+  //     console.log(message)
+  // }, this)
+  book.quotes.forEach(function(quote) {
+    console.log(quote.id, quote.quote)
+  })
 
 
   renderUpdateForm() {
@@ -86,6 +97,8 @@ class Book {
 
     </form>
     `;
+    // <textarea id="input-quote" name="quote" rows="5" cols="80" value="">${this.quotes.quote}</textarea>
+    // need the data-id? ${this.id}??
   }
 }
 

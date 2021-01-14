@@ -79,7 +79,7 @@ function getBooks() {
           },
           {
             quote: quote3
-          }
+          },
           {
             quote: quote4
           },
