@@ -18,31 +18,31 @@ class Book {
   }
 
   renderBookCard() {
-    // let html_string = ''
-    // html_string = html_string + '<div data-id=${this.id}>' +
-    //   '<h2>${this.title}</h2>' +
-    //   '<h3>${this.author}</h3>' +
-    //   '<p><b>Summary:</b> ${this.summary}</p>' +
-    //   '<p><b>Memorable Quotes:</b></p>' +
-    //   '<button data-id=${this.id} id="edit-button">edit</button>' +
-    //   '</div>' +
-    //   '<br><br>';
-    //   return html_string;
+    let html_string = ''
+    html_string = html_string + `<div data-id=${this.id}>` +
+      `<h2>${this.title}</h2>` +
+      `<h3>${this.author}</h3>` +
+      `<p><b>Summary:</b> ${this.summary}</p>` +
+      `<p><b>Memorable Quotes:</b></p>` +
+      `<button data-id=${this.id} id="edit-button">edit</button>` +
+      `</div>` +
+      `<br><br>`;
+      return html_string;
 
-    const quotes = []
-    this.quotes.forEach(quote_info => {
-      quotes.push(quote_info.quote)
-    })
-    return `
-    <div data-id=${this.id}>
-      <h2>${this.title}</h2>
-      <h3>${this.author}</h3>
-      <p><b>Summary:</b> ${this.summary}</p>
-      <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
-
-      <button data-id=${this.id} id="edit-button">edit</button>
-    </div>
-    <br><br>`;
+    // const quotes = []
+    // this.quotes.forEach(quote_info => {
+    //   quotes.push(quote_info.quote)
+    // })
+    // return `
+    // <div data-id=${this.id}>
+    //   <h2>${this.title}</h2>
+    //   <h3>${this.author}</h3>
+    //   <p><b>Summary:</b> ${this.summary}</p>
+    //   <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
+    //
+    //   <button data-id=${this.id} id="edit-button">edit</button>
+    // </div>
+    // <br><br>`;
   }
 
   static findById(id) {
