@@ -7,26 +7,35 @@ class Book {
     // this.quote_info
     this.quotes = bookAttributes.quotes
     // this.quotes = {
-    //
-    // }
-
-    // this.quotes = {
     //   Book.all.forEach( arrowFunction => { })
     // }
     // console.log(this.quotes)
     // for each inside of here.
     Book.all.push(this)
     // console.log(this);
+
+    // Book.all.forEach(book => (console.log(book.quotes)))
   }
 
   renderBookCard() {
+    // let html_string = ''
+    // html_string = html_string + '<div data-id=${this.id}>' +
+    //   '<h2>${this.title}</h2>' +
+    //   '<h3>${this.author}</h3>' +
+    //   '<p><b>Summary:</b> ${this.summary}</p>' +
+    //   '<p><b>Memorable Quotes:</b></p>' +
+    //   '<button data-id=${this.id} id="edit-button">edit</button>' +
+    //   '</div>' +
+    //   '<br><br>';
+    //   return html_string;
+
     const quotes = []
     this.quotes.forEach(quote_info => {
       quotes.push(quote_info.quote)
     })
     return `
     <div data-id=${this.id}>
-      <h2>${this.title}</h3>
+      <h2>${this.title}</h2>
       <h3>${this.author}</h3>
       <p><b>Summary:</b> ${this.summary}</p>
       <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
@@ -40,9 +49,13 @@ class Book {
     return this.all.find(book => book.id === id);
   }
 
-  // static renderQuotes(bookAttributes) {
-  //   return bookAttributes.quotes
-  // }
+  static renderQuotes(bookAttributes) {
+    for (const quotes in bookAttributes.quotes) {
+      if (bookAttributes.quotes.hasOwnProperty(quote)) {
+        renderQuote(bookAttributes.quotes[quote])
+      }
+    }
+  }
 
 
   renderUpdateForm() {

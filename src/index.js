@@ -99,6 +99,9 @@ function getBooks() {
     e.preventDefault();
     const id = e.target.dataset.id;
     const book = Book.findById(id);
+    console.log(book);
+    // debugger;
+    // book is defined despite console saying it is not??
     const title = e.target.querySelector("#input-title").value;
     const author = e.target.querySelector("#input-author").value;
     const summary = e.target.querySelector("#input-summary").value;
@@ -153,29 +156,6 @@ function getBooks() {
   //   .then(res => res.json())
   //   .then(updatedBook => console.log(updatedBook));
   // }
-
-  // function updateFetch(title, author, summary, quote) {
-  //   console.log(title, author, summary, quote)
-  //   fetch("http://localhost:3000/api/v1/books/`book.id`/edit", {
-  //     method: 'PUT',
-  //     headers: {"Content-Type": "application/json"},
-  //     body: JSON.stringify({
-  //       title: title,
-  //       author: author,
-  //       summary: summary,
-  //       quotes_attributes: [
-  //         {
-  //           quote: quote
-  //         }
-  //       ]
-  //     })
-  //   })
-  //   .then(response => response.json())
-  //   .then(book => {
-  //     console.log(book)
-  //   })
-  // }
-
 
 
 // for (const book of data) {
