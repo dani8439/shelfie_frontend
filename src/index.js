@@ -112,19 +112,18 @@ function getBooks() {
     const title = e.target.querySelector("#input-title").value;
     const author = e.target.querySelector("#input-author").value;
     const summary = e.target.querySelector("#input-summary").value;
-    // const quote = e.target.querySelector("#input-quote").value;
-    // const quote2 = e.target.querySelector("#input-quote2").value;
-    // const quote3 = e.target.querySelector("#input-quote3").value;
-    // const quote4 = e.target.querySelector("#input-quote4").value;
-    // const quote5 = e.target.querySelector("#input-quote5").value;
-    patchBook(book, title, author, summary)
-    // patchBook(book, title, author, summary, quote, quote2, quote3, quote4, quote5)
+    const quote = e.target.querySelector("#input-quote").value;
+    const quote2 = e.target.querySelector("#input-quote2").value;
+    const quote3 = e.target.querySelector("#input-quote3").value;
+    const quote4 = e.target.querySelector("#input-quote4").value;
+    const quote5 = e.target.querySelector("#input-quote5").value;
+    // patchBook(book, title, author, summary)
+    patchBook(book, title, author, summary, quote, quote2, quote3, quote4, quote5)
   }
 
-  function patchBook(book, title, author, summary) {
-    // function patchBook(book, title, author, summary, quote, quote2, quote3, quote4, quote5)
-    console.log(title, author, summary)
-    // console.log(title, author, summary, quote, quote2, quote3, quote4, quote5)
+
+  function patchBook(book, title, author, summary, quote, quote2, quote3, quote4, quote5) {
+    console.log(title, author, summary, quote, quote2, quote3, quote4, quote5)
     fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
       method: 'PATCH',
       headers: {
@@ -135,23 +134,23 @@ function getBooks() {
         title: title,
         author: author,
         summary: summary,
-        // quote_attributes: [
-        //   {
-        //     quote: quote
-        //   },
-        //  {
-        //     quote: quote2
-        //  },
-        //  {
-        //    quote: quote3
-        //  },
-        //  {
-        //    quote: quote4
-        //  },
-        //  {
-        //    quote: quote5
-        //  }
-        // ]
+        quote_attributes: [
+          {
+            quote: quote
+          },
+         {
+            quote: quote2
+         },
+         {
+           quote: quote3
+         },
+         {
+           quote: quote4
+         },
+         {
+           quote: quote5
+         }
+        ]
       })
     })
     .then(res => res.json())
