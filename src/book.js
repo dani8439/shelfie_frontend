@@ -92,7 +92,6 @@ class Book {
 
       this.quotes.forEach(quote_info => {
         // need the data-id? ${this.id}??
-        // need to get [i-1] into id name so it can be passed through the patchBook() fetch and update attributes accordingly.
         html_string = html_string + `<textarea id="input-quote${quote_info.id}" name="quote${quote_info.id}" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
       });
 

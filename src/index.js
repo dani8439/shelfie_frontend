@@ -112,7 +112,11 @@ function getBooks() {
     const title = e.target.querySelector("#input-title").value;
     const author = e.target.querySelector("#input-author").value;
     const summary = e.target.querySelector("#input-summary").value;
-    const quote = e.target.querySelector("#input-quote").value;
+
+    // var quotes = e.target.document.querySelectorAll('#input-quote').value
+    // something something loop?
+    // if e.target.querySelector("#input-quote3") != undefined
+    const quote1 = e.target.querySelector("#input-quote1").value;
     const quote2 = e.target.querySelector("#input-quote2").value;
     const quote3 = e.target.querySelector("#input-quote3").value;
     const quote4 = e.target.querySelector("#input-quote4").value;
