@@ -21,18 +21,19 @@ class Book {
 
   renderBookCard() {
     let html_string = ''
-    html_string = html_string + `<div data-id=${this.id}>` +
-      `<h2>${this.title}</h2>` +
-      `<h3>${this.author}</h3>` +
-      `<p><b>Summary:</b> ${this.summary}</p>` +
-      `<p><b>Memorable Quotes:</b></p>`;
+    html_string = html_string + `<div data-id=${this.id}>
+      <h2>${this.title}</h2>
+      <h3>${this.author}</h3>
+      <p><b>Summary:</b> ${this.summary}</p>
+      <p><b>Memorable Quotes:</b></p>`;
+
       this.quotes.forEach(quote_info => {
         html_string = html_string + `<p>` + quote_info.quote + `</p>`
       });
 
-      html_string = html_string + `<button data-id=${this.id} id="edit-button">edit</button>` +
-      `</div>` +
-      `<br><br>`;
+      html_string = html_string + `<button data-id=${this.id} id="edit-button">edit</button>
+      </div>
+      <br><br>`;
       return html_string;
 
       // want an individual <p> for each quote in the array. Do not need the id, but need to pass that in order to edit.
