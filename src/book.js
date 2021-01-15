@@ -81,12 +81,12 @@ class Book {
   // Book.all.forEach(book => book.quotes.forEach(function(quote) { console.log(book.title, quote.id, quote.quote)}))
 
   renderUpdateForm() {
-    const quotes = []
-    this.quotes.forEach(quote_info => {
-      quotes.push(quote_info.quote)
-    })
-    return `
-    <form data-id=${this.id} >
+    // const quotes = []
+    // this.quotes.forEach(quote_info => {
+    //   quotes.push(quote_info.quote)
+    // })
+    let html_string = ''
+    html_string = html_string + `<form data-id=${this.id}>
       <h3>Edit a Book!</h3>
 
       <label>Title</label>
@@ -97,17 +97,23 @@ class Book {
       <input id='input-author' type="text" name="author" value="${this.author}" class="input-text">
       <br><br>
 
-      <label>Summary</label>
+      <label>Summary:</label><br>
       <textarea id="input-summary" name="summary" rows="8" cols="80" value="">${this.summary}</textarea>
       <br><br>
+      <label>Quotes:</label>
+      <br>`;
 
-      <label>Quotes</label>
-      <textarea id="input-quote" name="quote" rows="5" cols="80" value="">${quotes.join('<p></p>')}</textarea>
-      <br><br>
+      this.quotes.forEach(quote_info => {
+        // need to get i-1 into id name
+        html_string = html_string + `<textarea id="input-quote" name="quote" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
+      });
+
+      html_string = html_string + `<br><br>
       <input id='edit-button' type="submit" name="submit" value="Save Book" class="submit">
 
     </form>
     `;
+    return html_string
     // <textarea id="input-quote" name="quote" rows="5" cols="80" value="">${this.quotes.quote}</textarea>
     // need the data-id? ${this.id}??
   }
