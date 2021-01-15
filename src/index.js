@@ -47,21 +47,21 @@ function getBooks() {
     const titleInput = document.querySelector("#input-title").value
     const authorInput = document.querySelector("#input-author").value
     const summaryInput = document.querySelector("#input-summary").value
-    const quoteInput = document.querySelector("#input-quote").value
+    const quoteInput1 = document.querySelector("#input-quote1").value
     const quoteInput2 = document.querySelector("#input-quote2").value
     const quoteInput3 = document.querySelector("#input-quote3").value
     const quoteInput4 = document.querySelector("#input-quote4").value
     const quoteInput5 = document.querySelector("#input-quote5").value
 
 
-    postFetch(titleInput, authorInput, summaryInput, quoteInput, quoteInput2, quoteInput3, quoteInput4, quoteInput5)
+    postFetch(titleInput, authorInput, summaryInput, quoteInput1, quoteInput2, quoteInput3, quoteInput4, quoteInput5)
 
   }
 
   // making post request to backend
 
-  function postFetch(title, author, summary, quote, quote2, quote3, quote4, quote5){
-    console.log(title, author, summary, quote, quote2, quote3, quote4, quote5)
+  function postFetch(title, author, summary, quote1, quote2, quote3, quote4, quote5){
+    console.log(title, author, summary, quote1, quote2, quote3, quote4, quote5)
      fetch(endPoint, {
       // POST request
       method: "POST",
@@ -72,7 +72,7 @@ function getBooks() {
         summary: summary,
         quotes_attributes: [
           {
-            quote: quote,
+            quote: quote1,
           },
           {
             quote: quote2
@@ -118,12 +118,12 @@ function getBooks() {
     const quote4 = e.target.querySelector("#input-quote4").value;
     const quote5 = e.target.querySelector("#input-quote5").value;
     // patchBook(book, title, author, summary)
-    patchBook(book, title, author, summary, quote, quote2, quote3, quote4, quote5)
+    patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5)
   }
 
 
-  function patchBook(book, title, author, summary, quote, quote2, quote3, quote4, quote5) {
-    console.log(title, author, summary, quote, quote2, quote3, quote4, quote5)
+  function patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5) {
+    console.log(title, author, summary, quote1, quote2, quote3, quote4, quote5)
     fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
       method: 'PATCH',
       headers: {
@@ -136,7 +136,7 @@ function getBooks() {
         summary: summary,
         quote_attributes: [
           {
-            quote: quote
+            quote: quote1
           },
          {
             quote: quote2

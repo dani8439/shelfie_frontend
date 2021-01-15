@@ -38,26 +38,17 @@ class Book {
 
       // want an individual <p> for each quote in the array. Do not need the id, but need to pass that in order to edit.
       // `<p>${this.quotes.quote}</p>`
-
-    // const quotes = []
-    // this.quotes.forEach(quote_info => {
-    //   quotes.push(quote_info.quote)
-    // })
-    // return `
-    // <div data-id=${this.id}>
-    //   <h2>${this.title}</h2>
-    //   <h3>${this.author}</h3>
-    //   <p><b>Summary:</b> ${this.summary}</p>
-    //   <p><b>Memorable Quotes:</b> ${quotes.join('<p></p>')}</p>
-    //
-    //   <button data-id=${this.id} id="edit-button">edit</button>
-    // </div>
-    // <br><br>`;
   }
 
   static findById(id) {
     return this.all.find(book => book.id === id);
   }
+
+  // static renderQuotes() {
+  //   this.all.quotes.forEach(quote_info => {
+  //     quote_info.quote
+  //   })
+  // }
 
   // static renderQuotes(bookAttributes) {
   //   for (const quotes in bookAttributes.quotes) {
@@ -81,10 +72,6 @@ class Book {
   // Book.all.forEach(book => book.quotes.forEach(function(quote) { console.log(book.title, quote.id, quote.quote)}))
 
   renderUpdateForm() {
-    // const quotes = []
-    // this.quotes.forEach(quote_info => {
-    //   quotes.push(quote_info.quote)
-    // })
     let html_string = ''
     html_string = html_string + `<form data-id=${this.id}>
       <h3>Edit a Book!</h3>
@@ -104,7 +91,8 @@ class Book {
       <br>`;
 
       this.quotes.forEach(quote_info => {
-        // need to get i-1 into id name
+        // need the data-id? ${this.id}??
+        // need to get [i-1] into id name so it can be passed through the patchBook() fetch and update attributes accordingly.
         html_string = html_string + `<textarea id="input-quote" name="quote" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
       });
 
@@ -114,8 +102,7 @@ class Book {
     </form>
     `;
     return html_string
-    // <textarea id="input-quote" name="quote" rows="5" cols="80" value="">${this.quotes.quote}</textarea>
-    // need the data-id? ${this.id}??
+
   }
 }
 
