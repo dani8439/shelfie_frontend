@@ -116,12 +116,28 @@ function getBooks() {
     // var quotes = e.target.document.querySelectorAll('#input-quote').value
     // something something loop?
     // if e.target.querySelector("#input-quote3") != undefined
+
+    // const quotes = e.target.querySelectorAll("#input-quote").value;
+    // console.log(quotes)
+    // const quote = e.target.querySelector("input-quote").value;
+    // console.log(quote)
+    // console.log("QUOTES")
+    // let quotes = []
+    // e.target.querySelectorAll("input-quote").forEach( quote => {
+    //   let obj = {}
+    //   quote.querySelectorAll("value").forEach( ele => obj[ele.quote] = ele.value || "");
+    //   quotes.push(obj)
+    // })
+    // console.log(quotes)
+
     const quote1 = e.target.querySelector("#input-quote1").value;
     const quote2 = e.target.querySelector("#input-quote2").value;
     const quote3 = e.target.querySelector("#input-quote3").value;
     const quote4 = e.target.querySelector("#input-quote4").value;
     const quote5 = e.target.querySelector("#input-quote5").value;
+    console.log(quote1, quote2, quote3, quote4, quote5)
     // patchBook(book, title, author, summary)
+    // patchBook(book, title, author, summary, quotes)
     patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5)
   }
 
