@@ -113,6 +113,13 @@ function getBooks() {
     const author = e.target.querySelector("#input-author").value;
     const summary = e.target.querySelector("#input-summary").value;
 
+    // loop through values of "#input-quote[id]" grab them?
+    // if (e.target.querySelector("#input-quote") != undefined) {
+    //   quote = e.target.querySelector("input-quote").value;
+    // }
+    //  check to see if e.target.querySelector("#input-quote[id]").value != undefined
+    // plop into an array to pull the info out?
+
     // var quotes = e.target.document.querySelectorAll('#input-quote').value
     // something something loop?
     // if e.target.querySelector("#input-quote3") != undefined
