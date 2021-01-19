@@ -139,6 +139,10 @@ function getBooks() {
     // console.log(quotes)
 
     // returns null for all values -- variable has been declared, but not yet assigned a value.
+    //
+    // var input_quotes = e.target.querySelectorAll('#input_quote').value;
+    //
+    // console.log(input_quotes)
 
     const quote1 = e.target.querySelector("#input-quote1").value;
     const quote2 = e.target.querySelector("#input-quote2").value;
@@ -146,10 +150,11 @@ function getBooks() {
     const quote4 = e.target.querySelector("#input-quote4").value;
     const quote5 = e.target.querySelector("#input-quote5").value;
 
-    console.log(quote1, quote2, quote3, quote4, quote5)
+    // console.log(quote1, quote2, quote3, quote4, quote5)
     // patchBook(book, title, author, summary)
     // patchBook(book, title, author, summary, quotes)
     patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5)
+    // patchBook(book, title, author, input_quotes)
   }
 
 
