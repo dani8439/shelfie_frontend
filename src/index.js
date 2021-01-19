@@ -112,6 +112,7 @@ function getBooks() {
     const title = e.target.querySelector("#input-title").value;
     const author = e.target.querySelector("#input-author").value;
     const summary = e.target.querySelector("#input-summary").value;
+    console.log(title, author, summary)
 
     // loop through values of "#input-quote[id]" grab them?
     // if (e.target.querySelector("#input-quote") != undefined) {
@@ -144,6 +145,7 @@ function getBooks() {
     const quote3 = e.target.querySelector("#input-quote3").value;
     const quote4 = e.target.querySelector("#input-quote4").value;
     const quote5 = e.target.querySelector("#input-quote5").value;
+
     console.log(quote1, quote2, quote3, quote4, quote5)
     // patchBook(book, title, author, summary)
     // patchBook(book, title, author, summary, quotes)

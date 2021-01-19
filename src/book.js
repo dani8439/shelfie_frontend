@@ -10,9 +10,6 @@ class Book {
     //   console.log(quote.id, quote.quote)
     // })
 
-    // this.quotes = {
-    //   Book.all.forEach( arrowFunction => { })
-    // }
     // console.log(this.quotes)
     // for each inside of here.
     Book.all.push(this)
@@ -36,8 +33,6 @@ class Book {
       <br><br>`;
       return html_string;
 
-      // want an individual <p> for each quote in the array. Do not need the id, but need to pass that in order to edit.
-      // `<p>${this.quotes.quote}</p>`
   }
 
   static findById(id) {
