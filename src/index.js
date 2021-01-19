@@ -137,6 +137,8 @@ function getBooks() {
     // })
     // console.log(quotes)
 
+    // returns null for all values -- variable has been declared, but not yet assigned a value.
+
     const quote1 = e.target.querySelector("#input-quote1").value;
     const quote2 = e.target.querySelector("#input-quote2").value;
     const quote3 = e.target.querySelector("#input-quote3").value;

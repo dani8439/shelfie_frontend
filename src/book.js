@@ -93,7 +93,7 @@ class Book {
       this.quotes.forEach(quote_info => {
         // need the data-id? ${this.id}??
         // quote${quote_info.id}
-        html_string = html_string + `<textarea id="input-quote${quote_info.id}" name="quote" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
+        html_string = html_string + `<textarea id="input-quote${quote_info.id}" name="quote${quote_info.id}" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
 
       //  html_string = html_string + `<textarea id="input-quote" name="quote" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
       });
