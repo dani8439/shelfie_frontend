@@ -126,42 +126,56 @@ function getBooks() {
     let quote4 = "";
     let quote5 = "";
 
+    let new_quotes = []
     const quote_count = e.target.querySelector("#quote_count").value;
+    for (i=1; i < new_quotes.length; i++) {
+      const quote_id = e.target.querySelector("#id-quote"+i).value;
+      const quote_value = e.target.querySelector("#input-quote"+i).value;
+      const quote = {
+        id: quote_id,
+        text: quote_value
+      }
+      new_quotes.add(quote)
+    }
 
     // for loop quotes array.
-
-    if (quote_count >= 1) {
-      quote1 = e.target.querySelector("#input-quote1").value;
-    }
-
-    if (quote_count >= 2) {
-      quote2 = e.target.querySelector("#input-quote2").value;
-    }
-
-    if (quote_count >= 3) {
-      quote3 = e.target.querySelector("#input-quote3").value;
-    }
-
-    if (quote_count >= 4) {
-      quote4 = e.target.querySelector("#input-quote4").value;
-    }
-
-    if (quote_count >= 5) {
-      quote5 = e.target.querySelector("#input-quote5").value;
-    }
+    //
+    // if (quote_count >= 1) {
+    //   quote1 = e.target.querySelector("#input-quote1").value;
+    // }
+    //
+    // if (quote_count >= 2) {
+    //   quote2 = e.target.querySelector("#input-quote2").value;
+    // }
+    //
+    // if (quote_count >= 3) {
+    //   quote3 = e.target.querySelector("#input-quote3").value;
+    // }
+    //
+    // if (quote_count >= 4) {
+    //   quote4 = e.target.querySelector("#input-quote4").value;
+    // }
+    //
+    // if (quote_count >= 5) {
+    //   quote5 = e.target.querySelector("#input-quote5").value;
+    // }
 
 
 
     // console.log(quote1, quote2, quote3, quote4, quote5)
     // patchBook(book, title, author, summary)
     // patchBook(book, title, author, summary, quotes)
-    patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5)
+    // patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5)
+    patchBook(book, title, author, summary, new_quotes)
     // patchBook(book, title, author, input_quotes)
   }
 
+  //
+  // function patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5) {
+  //   console.log(title, author, summary, quote1, quote2, quote3, quote4, quote5)
 
-  function patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5) {
-    console.log(title, author, summary, quote1, quote2, quote3, quote4, quote5)
+  function patchBook(book, title, author, summary, new_quotes) {
+    console.log(title, author, summary, new_quotes)
     fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
       method: 'PATCH',
       headers: {
@@ -173,21 +187,22 @@ function getBooks() {
         author: author,
         summary: summary,
         quote_attributes: [
-          {
-            quote: quote1
-          },
-         {
-            quote: quote2
-         },
-         {
-           quote: quote3
-         },
-         {
-           quote: quote4
-         },
-         {
-           quote: quote5
-         }
+          new_quotes
+         //  {
+         //    quote: quote1
+         //  },
+         // {
+         //    quote: quote2
+         // },
+         // {
+         //   quote: quote3
+         // },
+         // {
+         //   quote: quote4
+         // },
+         // {
+         //   quote: quote5
+         // }
         ]
       })
     })
