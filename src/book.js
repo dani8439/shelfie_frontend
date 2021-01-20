@@ -96,7 +96,7 @@ class Book {
       //  html_string = html_string + `<textarea id="input-quote" name="quote" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
       });
       // act as a check to check quote_count and then for blank fields
-      html_string = html_string + `<input id='quote-count' type="hidden" name="quote_count" value="${counter}">`
+      html_string = html_string + `<input id='quote_count' type="hidden" name="quote_count" value="${counter}">`
       html_string = html_string + `<br><br>
       <input id='edit-button' type="submit" name="submit" value="Save Book" class="submit">
 
