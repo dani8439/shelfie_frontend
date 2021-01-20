@@ -126,10 +126,11 @@ function getBooks() {
     let quote4 = "";
     let quote5 = "";
 
-    // let new_quotes = []
+    // let new_quotes = {}
     const quote_count = e.target.querySelector("#quote_count").value;
-    // for (let i=1 to count)
-    // for (let i=0; i < quote_count.length; i++) {
+    // // for (let i=1 to count)
+    // for (let i=1; i <= quote_count.length; i++) {
+    //   // is no id-quote in html_string
     //   const quote_id = e.target.querySelector("#id-quote"+i).value;
     //   const quote_value = e.target.querySelector("#input-quote"+i).value;
     //   const quote = {
@@ -171,10 +172,10 @@ function getBooks() {
     // patchBook(book, title, author, input_quotes)
   }
 
-  //
+
   function patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5) {
     console.log(title, author, summary, quote1, quote2, quote3, quote4, quote5)
-  //
+
   // function patchBook(book, title, author, summary, new_quotes) {
   //   console.log(title, author, summary, new_quotes)
     fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
