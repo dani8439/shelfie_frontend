@@ -127,10 +127,10 @@ function getBooks() {
     let quote5 = "";
 
 
-    const count = e.target.querySelector("#quote_count").value;
+    const quote_count = e.target.querySelector("#quote_count").value;
     // const new_quotes = [];
     // // // for (let i=1 to count)
-    // for (let i=1; i <= count; i++) {
+    // for (let i=1; i <= quote_count; i++) {
     //   // is no id-quote in html_string
     //   const quote_id = e.target.querySelector("#quote"+i).value;
     //   const quote_value = e.target.querySelector("#input-quote"+i).value;
