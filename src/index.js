@@ -126,18 +126,19 @@ function getBooks() {
     let quote4 = "";
     let quote5 = "";
 
-    // let new_quotes = {}
-    const quote_count = e.target.querySelector("#quote_count").value;
-    // // for (let i=1 to count)
-    // for (let i=1; i <= quote_count.length; i++) {
+
+    const count = e.target.querySelector("#quote_count").value;
+    // const new_quotes = [];
+    // // // for (let i=1 to count)
+    // for (let i=1; i <= count; i++) {
     //   // is no id-quote in html_string
-    //   const quote_id = e.target.querySelector("#id-quote"+i).value;
+    //   const quote_id = e.target.querySelector("#quote"+i).value;
     //   const quote_value = e.target.querySelector("#input-quote"+i).value;
     //   const quote = {
     //     id: quote_id,
     //     quote: quote_value
     //   }
-    //   new_quotes.add(quote)
+    //   new_quotes.push(quote)
     // }
 
     // for loop quotes array.
