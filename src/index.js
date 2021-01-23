@@ -11,18 +11,22 @@ document.addEventListener('DOMContentLoaded', () => {
   createFormHandler(e))
 
   // listen for 'click' event on book container
+  // const editButton = document.querySelector("#edit-button")
   const bookContainer = document.querySelector('#book-container')
   bookContainer.addEventListener('click', e => {
+  // editButton.addEventListener('click', e => {
     // do not need to parseInt as already a string
     const id = e.target.dataset.id;
     const book = Book.findById(id);
     // debugger
     // console.log(book);
     document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
+    document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
   });
 
   // listen for the submit event of the edit form and handle the data
   document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
+  document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
 
 })
 
@@ -107,91 +111,38 @@ function getBooks() {
     e.preventDefault();
     const id = e.target.dataset.id;
     const book = Book.findById(id);
-    console.log(book);
     // debugger;
     const title = e.target.querySelector("#input-title").value;
     const author = e.target.querySelector("#input-author").value;
     const summary = e.target.querySelector("#input-summary").value;
-    console.log(title, author, summary)
 
-    // loop through values of "#input-quote[id]" grab them?
-    // if (e.target.querySelector("#input-quote") != undefined) {
-    //   quote = e.target.querySelector("input-quote").value;
-    // }
-    //  check to see if e.target.querySelector("#input-quote[id]").value != undefined
-    // plop into an array to pull the info out?
-
-    // var quotes = e.target.document.querySelectorAll('#input-quote').value
-    // something something loop?
-    // if e.target.querySelector("#input-quote3") != undefined
-
-    // const quotes = e.target.querySelectorAll("#input-quote").value;
-    // console.log(quotes)
-    // const quote = e.target.querySelector("input-quote").value;
-    // console.log(quote)
-    // console.log("QUOTES")
-    // let quotes = []
-    // e.target.querySelectorAll("input-quote").forEach( quote => {
-    //   let obj = {}
-    //   quote.querySelectorAll("value").forEach( ele => obj[ele.quote] = ele.value || "");
-    //   quotes.push(obj)
-    // })
-    // console.log(quotes)
-
-    // returns null for all values -- variable has been declared, but not yet assigned a value.
-    //
-    // var input_quotes = e.target.querySelectorAll('#input_quote').value;
-    //
-    // console.log(input_quotes)
-
-    // const quote1 = e.target.querySelector("#input-quote1").value;
-    // const quote2 = e.target.querySelector("#input-quote2").value;
-    // const quote3 = e.target.querySelector("#input-quote3").value;
-    // const quote4 = e.target.querySelector("#input-quote4").value;
-    // const quote5 = e.target.querySelector("#input-quote5").value;
-
-    let quote1 = "";
-    let quote2 = "";
-    let quote3 = "";
-    let quote4 = "";
-    let quote5 = "";
 
     const quote_count = e.target.querySelector("#quote_count").value;
-
-    // for loop quotes array.
-
-    if (quote_count >= 1) {
-      quote1 = e.target.querySelector("#input-quote1").value;
+    // goes in the loop as grabbing five.
+    // const quote_id = e.target.querySelector("#quote.id").value;
+    const new_quotes = [];
+    // // for (let i=1 to count)
+    for (let i=1; i <= quote_count; i++) {
+      // hash of data for the attributes.
+      const quote_id = e.target.querySelector("#input-quote"+i).dataset.quoteid;
+      const quote_value = e.target.querySelector("#input-quote"+i).value;
+      const quote = {
+        id: quote_id,
+        quote: quote_value
+      }
+      new_quotes.push(quote)
     }
+    console.log(new_quotes)
 
-    if (quote_count >= 2) {
-      quote2 = e.target.querySelector("#input-quote2").value;
-    }
-
-    if (quote_count >= 3) {
-      quote3 = e.target.querySelector("#input-quote3").value;
-    }
-
-    if (quote_count >= 4) {
-      quote4 = e.target.querySelector("#input-quote4").value;
-    }
-
-    if (quote_count >= 5) {
-      quote5 = e.target.querySelector("#input-quote5").value;
-    }
-
-
-
-    // console.log(quote1, quote2, quote3, quote4, quote5)
-    // patchBook(book, title, author, summary)
-    // patchBook(book, title, author, summary, quotes)
-    patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5)
+    patchBook(book, title, author, summary, new_quotes)
     // patchBook(book, title, author, input_quotes)
   }
 
 
-  function patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5) {
-    console.log(title, author, summary, quote1, quote2, quote3, quote4, quote5)
+
+
+  function patchBook(book, title, author, summary, new_quotes) {
+    console.log(title, author, summary, new_quotes)
     fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
       method: 'PATCH',
       headers: {
@@ -202,29 +153,57 @@ function getBooks() {
         title: title,
         author: author,
         summary: summary,
-        quote_attributes: [
-          {
-            quote: quote1
-          },
-         {
-            quote: quote2
-         },
-         {
-           quote: quote3
-         },
-         {
-           quote: quote4
-         },
-         {
-           quote: quote5
-         }
-        ]
+        quotes_attributes: new_quotes
+
       })
     })
     .then(res => res.json())
     .then(updatedBook => console.log(updatedBook));
 
   }
+
+
+  function newQuoteHandler(e) {
+    e.preventDefault();
+
+    const id = e.target.dataset.id;
+    const book = Book.findById(id);
+
+    const new_quote = e.target.querySelector("#input-quote").value;
+
+    postQuote(book, new_quote)
+
+  }
+
+
+  function postQuote(book, new_quote) {
+    console.log(new_quote)
+    fetch(`http://localhost:3000/api/v1/books/${book.id}/quotes`, {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        quote: new_quote
+
+      })
+    })
+    .then(res => res.json())
+    .then(updatedBook => console.log(updatedBook))
+    // hacky to force reload the page with new quote. sledge hammer, how would YOU DO IT?
+    .then(location.reload())
+    // creates an anonymous function that gets called when the .then happens.
+    // need to research.
+    // .then(() => {
+    //   const element = document.querySelector(`book${book.id}`);
+    //   element.scrollIntoView();
+    //   }
+    // );
+
+  }
+
+
 
 
 // for (const book of data) {

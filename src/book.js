@@ -6,10 +6,6 @@ class Book {
     this.summary = bookAttributes.summary;
     this.quotes = bookAttributes.quotes
 
-    // this.quotes.forEach(function(quote) {
-    //   console.log(quote.id, quote.quote)
-    // })
-
     // console.log(this.quotes)
     // for each inside of here.
     Book.all.push(this)
@@ -18,17 +14,19 @@ class Book {
 
   renderBookCard() {
     let html_string = ''
-    html_string = html_string + `<div data-id=${this.id}>
+    html_string = html_string + `<div data-id=${this.id} id="book${this.id}">
       <h2>${this.title}</h2>
       <h3>${this.author}</h3>
       <p><b>Summary:</b> ${this.summary}</p>
       <p><b>Memorable Quotes:</b></p>`;
+
 
       this.quotes.forEach(quote_info => {
         html_string = html_string + `<p>` + quote_info.quote + `</p>`
       });
 
       html_string = html_string + `<button data-id=${this.id} id="edit-button">edit</button>
+
       </div>
       <br><br>`;
       return html_string;
@@ -38,6 +36,14 @@ class Book {
   static findById(id) {
     return this.all.find(book => book.id === id);
   }
+
+  // static renderQuotes(id, bookAttributes) {
+  //   Book.all.quotes.forEach(function(quote) {
+  //     if (Book.findById() === id) {
+  //       console.log(quote.id, quote.quote)
+  //     }
+  //   })
+  // }
 
   // static renderQuotes() {
   //   this.all.quotes.forEach(quote_info => {
@@ -52,12 +58,6 @@ class Book {
   //     }
   //   }
   // }
-
-
-  // this.signatories.forEach(function(signatory){
-  //     let message = `${this.closing[signatory]}, ${signatory}`
-  //     console.log(message)
-  // }, this)
 
   // book.quotes.forEach(function(quote) {
   //   console.log(quote.id, quote.quote)
@@ -90,8 +90,7 @@ class Book {
         counter +=1;
         // need the data-id? ${this.id}??
         // quote${quote_info.id}
-        // textarea id="input-quote${quote_info.id}
-        html_string = html_string + `<textarea id="input-quote${counter}" name="quote${quote_info.id}" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
+        html_string = html_string + `<textarea id="input-quote${counter}" name="quote${quote_info.id}" data-quoteid="${quote_info.id}" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
 
       //  html_string = html_string + `<textarea id="input-quote" name="quote" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
       });
@@ -99,6 +98,24 @@ class Book {
       html_string = html_string + `<input id='quote_count' type="hidden" name="quote_count" value="${counter}">`
       html_string = html_string + `<br><br>
       <input id='edit-button' type="submit" name="submit" value="Save Book" class="submit">
+
+    </form>
+    `;
+    return html_string
+
+  }
+
+
+  renderNewQuote() {
+    let html_string = ''
+    html_string = html_string + `<form data-id=${this.id}>
+    <h3>Add a Quote!</h3>
+
+    <label>Quote:</label><br>
+    <textarea id="input-quote" name="quote" rows="8" cols="80" value="" data-bookid="${this.id}"></textarea>
+    <br><br>
+
+    <input id='save-quote' type="submit" name="submit" value="Save Quote" class="submit">
 
     </form>
     `;
