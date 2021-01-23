@@ -159,6 +159,9 @@ function getBooks() {
   }
 
 
+
+
+
 // for (const book of data) {
 //   console.log(book.attributes.title);
 //   for (const quote of book.attributes.quotes) {

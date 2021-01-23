@@ -26,6 +26,7 @@ class Book {
       });
 
       html_string = html_string + `<button data-id=${this.id} id="edit-button">edit</button>
+      <button data-id=${this.id} id="add-quote">add quote</button>
       </div>
       <br><br>`;
       return html_string;
