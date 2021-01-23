@@ -11,14 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
   createFormHandler(e))
 
   // listen for 'click' event on book container
+  // const editButton = document.querySelector("#edit-button")
   const bookContainer = document.querySelector('#book-container')
   bookContainer.addEventListener('click', e => {
+  // editButton.addEventListener('click', e => {
     // do not need to parseInt as already a string
     const id = e.target.dataset.id;
     const book = Book.findById(id);
     // debugger
     // console.log(book);
     document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
+    document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
   });
 
   // listen for the submit event of the edit form and handle the data
