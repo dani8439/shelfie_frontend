@@ -191,8 +191,15 @@ function getBooks() {
     })
     .then(res => res.json())
     .then(updatedBook => console.log(updatedBook))
-    // hacky to force reload the page with new quote.
-    .then(location.reload());
+    // hacky to force reload the page with new quote. sledge hammer, how would YOU DO IT?
+    .then(location.reload())
+    // creates an anonymous function that gets called when the .then happens.
+    // need to research.
+    // .then(() => {
+    //   const element = document.querySelector(`book${book.id}`);
+    //   element.scrollIntoView();
+    //   }
+    // );
 
   }
 

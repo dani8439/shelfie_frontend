@@ -14,7 +14,7 @@ class Book {
 
   renderBookCard() {
     let html_string = ''
-    html_string = html_string + `<div data-id=${this.id}>
+    html_string = html_string + `<div data-id=${this.id} id="book${this.id}">
       <h2>${this.title}</h2>
       <h3>${this.author}</h3>
       <p><b>Summary:</b> ${this.summary}</p>
