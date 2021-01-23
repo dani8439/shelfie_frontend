@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // listen for the submit event of the edit form and handle the data
   document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
+  document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
 
 })
 
@@ -161,6 +162,37 @@ function getBooks() {
 
   }
 
+
+  function newQuoteHandler(e) {
+    e.preventDefault();
+
+    const id = e.target.dataset.id;
+    const book = Book.findById(id);
+
+    const new_quote = e.target.querySelector("#input-quote").value;
+
+    postQuote(book, new_quote)
+
+  }
+
+
+  function postQuote(book, new_quote) {
+    console.log(new_quote)
+    fetch(`http://localhost:3000/api/v1/books/${book.id}/quotes`, {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        quote: new_quote
+
+      })
+    })
+    .then(res => res.json())
+    .then(updatedBook => console.log(updatedBook));
+
+  }
 
 
 
