@@ -9,7 +9,7 @@ class Book {
     // console.log(this.quotes)
     // for each inside of here.
     Book.all.push(this)
-    console.log(this);
+    // console.log(this);
   }
 
   renderBookCard() {
@@ -89,7 +89,7 @@ class Book {
         counter +=1;
         // need the data-id? ${this.id}??
         // quote${quote_info.id}
-        html_string = html_string + `<textarea id="input-quote${counter}" name="quote${quote_info.id}" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
+        html_string = html_string + `<textarea id="input-quote${counter}" name="quote${quote_info.id}" data-quoteid="${quote_info.id}" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
 
       //  html_string = html_string + `<textarea id="input-quote" name="quote" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
       });

@@ -120,66 +120,68 @@ function getBooks() {
     // const quote4 = e.target.querySelector("#input-quote4").value;
     // const quote5 = e.target.querySelector("#input-quote5").value;
 
-    let quote1 = "";
-    let quote2 = "";
-    let quote3 = "";
-    let quote4 = "";
-    let quote5 = "";
+    // let quote1 = "";
+    // let quote2 = "";
+    // let quote3 = "";
+    // let quote4 = "";
+    // let quote5 = "";
 
 
     const quote_count = e.target.querySelector("#quote_count").value;
+    // goes in the loop as grabbing five.
     // const quote_id = e.target.querySelector("#quote.id").value;
-    // const new_quotes = [];
-    // // // for (let i=1 to count)
-    // for (let i=1; i <= quote_count.length; i++) {
-    //   // is no id-quote in html_string
-    //   const quote_id = e.target.querySelector("#quote"+i).value;
-    //   const quote_value = e.target.querySelector("#input-quote"+i).value;
-    //   const quote = {
-    //     id: quote_id,
-    //     quote: quote_value
-    //   }
-    //   new_quotes.push(quote)
-    // }
+    const new_quotes = [];
+    // // for (let i=1 to count)
+    for (let i=1; i <= quote_count; i++) {
+      // hash of data for the attributes.
+      const quote_id = e.target.querySelector("#input-quote"+i).dataset.quoteid;
+      const quote_value = e.target.querySelector("#input-quote"+i).value;
+      const quote = {
+        id: quote_id,
+        quote: quote_value
+      }
+      new_quotes.push(quote)
+    }
+    console.log(new_quotes)
 
     // for loop quotes array.
 
-    if (quote_count >= 1) {
-      quote1 = e.target.querySelector("#input-quote1").value;
-    }
-
-    if (quote_count >= 2) {
-      quote2 = e.target.querySelector("#input-quote2").value;
-    }
-
-    if (quote_count >= 3) {
-      quote3 = e.target.querySelector("#input-quote3").value;
-    }
-
-    if (quote_count >= 4) {
-      quote4 = e.target.querySelector("#input-quote4").value;
-    }
-
-    if (quote_count >= 5) {
-      quote5 = e.target.querySelector("#input-quote5").value;
-    }
+    // if (quote_count >= 1) {
+    //   quote1 = e.target.querySelector("#input-quote1").value;
+    // }
+    //
+    // if (quote_count >= 2) {
+    //   quote2 = e.target.querySelector("#input-quote2").value;
+    // }
+    //
+    // if (quote_count >= 3) {
+    //   quote3 = e.target.querySelector("#input-quote3").value;
+    // }
+    //
+    // if (quote_count >= 4) {
+    //   quote4 = e.target.querySelector("#input-quote4").value;
+    // }
+    //
+    // if (quote_count >= 5) {
+    //   quote5 = e.target.querySelector("#input-quote5").value;
+    // }
 
 
 
     // console.log(quote1, quote2, quote3, quote4, quote5)
     // patchBook(book, title, author, summary)
     // patchBook(book, title, author, summary, quotes)
-    patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5)
-    // patchBook(book, title, author, summary, new_quotes)
+    // patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5)
+    patchBook(book, title, author, summary, new_quotes)
     // patchBook(book, title, author, input_quotes)
   }
 
 
-  function patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5) {
-    console.log(title, author, summary, quote1, quote2, quote3, quote4, quote5)
+  // function patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5) {
+  //   console.log(title, author, summary, quote1, quote2, quote3, quote4, quote5)
 
-  // function patchBook(book, title, author, summary, new_quotes) {
-  //   console.log(title, author, summary, new_quotes)
+  function patchBook(book, title, author, summary, new_quotes) {
+    console.log(title, author, summary, new_quotes)
     fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
       method: 'PATCH',
       headers: {
@@ -190,25 +192,24 @@ function getBooks() {
         title: title,
         author: author,
         summary: summary,
-        quote_attributes: [
-          // new_quotes
-          {
-            quote: quote1
+        quote_attributes: new_quotes
+         //  {
+         //    quote: quote1
+         //
+         //  },
+         // {
+         //    quote: quote2
+         // },
+         // {
+         //   quote: quote3
+         // },
+         // {
+         //   quote: quote4
+         // },
+         // {
+         //   quote: quote5
+         // }
 
-          },
-         {
-            quote: quote2
-         },
-         {
-           quote: quote3
-         },
-         {
-           quote: quote4
-         },
-         {
-           quote: quote5
-         }
-        ]
       })
     })
     .then(res => res.json())
