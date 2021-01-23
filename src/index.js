@@ -190,7 +190,9 @@ function getBooks() {
       })
     })
     .then(res => res.json())
-    .then(updatedBook => console.log(updatedBook));
+    .then(updatedBook => console.log(updatedBook))
+    // hacky to force reload the page with new quote.
+    .then(location.reload());
 
   }
 
