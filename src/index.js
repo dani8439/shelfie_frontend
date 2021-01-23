@@ -177,8 +177,7 @@ function getBooks() {
   }
 
 
-  // function patchBook(book, title, author, summary, quote1, quote2, quote3, quote4, quote5) {
-  //   console.log(title, author, summary, quote1, quote2, quote3, quote4, quote5)
+
 
   function patchBook(book, title, author, summary, new_quotes) {
     console.log(title, author, summary, new_quotes)
@@ -192,23 +191,7 @@ function getBooks() {
         title: title,
         author: author,
         summary: summary,
-        quote_attributes: new_quotes
-         //  {
-         //    quote: quote1
-         //
-         //  },
-         // {
-         //    quote: quote2
-         // },
-         // {
-         //   quote: quote3
-         // },
-         // {
-         //   quote: quote4
-         // },
-         // {
-         //   quote: quote5
-         // }
+        quotes_attributes: new_quotes
 
       })
     })
