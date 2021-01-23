@@ -6,14 +6,10 @@ class Book {
     this.summary = bookAttributes.summary;
     this.quotes = bookAttributes.quotes
 
-    // this.quotes.forEach(function(quote) {
-    //   console.log(quote.id, quote.quote)
-    // })
-
     // console.log(this.quotes)
     // for each inside of here.
     Book.all.push(this)
-    // console.log(this);
+    console.log(this);
   }
 
   renderBookCard() {
@@ -23,6 +19,7 @@ class Book {
       <h3>${this.author}</h3>
       <p><b>Summary:</b> ${this.summary}</p>
       <p><b>Memorable Quotes:</b></p>`;
+
 
       this.quotes.forEach(quote_info => {
         html_string = html_string + `<p>` + quote_info.quote + `</p>`
@@ -39,6 +36,14 @@ class Book {
     return this.all.find(book => book.id === id);
   }
 
+  // static renderQuotes(id, bookAttributes) {
+  //   Book.all.quotes.forEach(function(quote) {
+  //     if (Book.findById() === id) {
+  //       console.log(quote.id, quote.quote)
+  //     }
+  //   })
+  // }
+
   // static renderQuotes() {
   //   this.all.quotes.forEach(quote_info => {
   //     quote_info.quote
@@ -52,12 +57,6 @@ class Book {
   //     }
   //   }
   // }
-
-
-  // this.signatories.forEach(function(signatory){
-  //     let message = `${this.closing[signatory]}, ${signatory}`
-  //     console.log(message)
-  // }, this)
 
   // book.quotes.forEach(function(quote) {
   //   console.log(quote.id, quote.quote)
@@ -90,7 +89,6 @@ class Book {
         counter +=1;
         // need the data-id? ${this.id}??
         // quote${quote_info.id}
-        // textarea id="input-quote${quote_info.id}
         html_string = html_string + `<textarea id="input-quote${counter}" name="quote${quote_info.id}" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
 
       //  html_string = html_string + `<textarea id="input-quote" name="quote" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
