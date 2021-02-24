@@ -35,6 +35,7 @@ class Book {
 
   static findById(id) {
     return this.all.find(book => book.id === id);
+    // parseInt(book.id) === id
   }
 
   // static renderQuotes(id, bookAttributes) {
