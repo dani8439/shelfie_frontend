@@ -117,32 +117,32 @@ function getBooks() {
     const summary = e.target.querySelector("#input-summary").value;
 
 
-    const quote_count = e.target.querySelector("#quote_count").value;
+    const quoteCount = e.target.querySelector("#quote_count").value;
     // goes in the loop as grabbing five.
     // const quote_id = e.target.querySelector("#quote.id").value;
-    const new_quotes = [];
+    const newQuotes = [];
     // // for (let i=1 to count)
-    for (let i=1; i <= quote_count; i++) {
+    for (let i=1; i <= quoteCount; i++) {
       // hash of data for the attributes.
-      const quote_id = e.target.querySelector("#input-quote"+i).dataset.quoteid;
-      const quote_value = e.target.querySelector("#input-quote"+i).value;
+      const quoteId = e.target.querySelector("#input-quote"+i).dataset.quoteid;
+      const quoteValue = e.target.querySelector("#input-quote"+i).value;
       const quote = {
-        id: quote_id,
-        quote: quote_value
+        id: quoteId,
+        quote: quoteValue
       }
-      new_quotes.push(quote)
+      newQuotes.push(quote)
     }
-    console.log(new_quotes)
+    console.log(newQuotes)
 
-    patchBook(book, title, author, summary, new_quotes)
+    patchBook(book, title, author, summary, newQuotes)
     // patchBook(book, title, author, input_quotes)
   }
 
 
 
 
-  function patchBook(book, title, author, summary, new_quotes) {
-    console.log(title, author, summary, new_quotes)
+  function patchBook(book, title, author, summary, newQuotes) {
+    console.log(title, author, summary, newQuotes)
     fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
       method: 'PATCH',
       headers: {
@@ -153,7 +153,7 @@ function getBooks() {
         title: title,
         author: author,
         summary: summary,
-        quotes_attributes: new_quotes
+        quotes_attributes: newQuotes
 
       })
     })
@@ -169,15 +169,15 @@ function getBooks() {
     const id = e.target.dataset.id;
     const book = Book.findById(id);
 
-    const new_quote = e.target.querySelector("#input-quote").value;
+    const newQuote = e.target.querySelector("#input-quote").value;
 
-    postQuote(book, new_quote)
+    postQuote(book, newQuote)
 
   }
 
 
-  function postQuote(book, new_quote) {
-    console.log(new_quote)
+  function postQuote(book, newQuote) {
+    console.log(newQuote)
     fetch(`http://localhost:3000/api/v1/books/${book.id}/quotes`, {
       method: 'POST',
       headers: {
@@ -185,7 +185,7 @@ function getBooks() {
         Accept: 'application/json',
       },
       body: JSON.stringify({
-        quote: new_quote
+        quote: newQuote
 
       })
     })
