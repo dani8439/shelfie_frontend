@@ -15,7 +15,7 @@ class Book {
   renderBookCard() {
     let html_string = ''
     html_string = html_string + `
-    <div class="card border-dark mb-3" style="max-width: 100rem;">
+    <div class="card border-dark mb-3" style="max-width: 50rem;">
     <div class="card-header"></div>
       <div class="card-body">
         <h2 class="card-title">${this.title}</h2>
@@ -27,7 +27,7 @@ class Book {
           html_string = html_string + `<p>` + quote_info.quote + `</p>`
         });
 
-        html_string = html_string + `<button data-id=${this.id} id="edit-button">edit</button>
+        html_string = html_string + `<button data-id=${this.id} id="edit-button" class="btn btn-outline-secondary">edit</button>
 
         </div>
         <br><br>
@@ -61,32 +61,6 @@ class Book {
     return this.all.find(book => book.id === id);
     // parseInt(book.id) === id
   }
-
-  // static renderQuotes(id, bookAttributes) {
-  //   Book.all.quotes.forEach(function(quote) {
-  //     if (Book.findById() === id) {
-  //       console.log(quote.id, quote.quote)
-  //     }
-  //   })
-  // }
-
-  // static renderQuotes() {
-  //   this.all.quotes.forEach(quote_info => {
-  //     quote_info.quote
-  //   })
-  // }
-
-  // static renderQuotes(bookAttributes) {
-  //   for (const quotes in bookAttributes.quotes) {
-  //     if (bookAttributes.quotes.hasOwnProperty(quote)) {
-  //       renderQuote(bookAttributes.quotes[quote])
-  //     }
-  //   }
-  // }
-
-  // book.quotes.forEach(function(quote) {
-  //   console.log(quote.id, quote.quote)
-  // })
 
   // Book.all.forEach(book => (book.quotes.forEach(function(quote) { console.log( quote.id, quote.quote)})))
   // Book.all.forEach(book => book.quotes.forEach(function(quote) { console.log(book.title, quote.id, quote.quote)}))
