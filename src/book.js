@@ -35,26 +35,6 @@ class Book {
       </div>`;
       return html_string;
 
-
-
-
-      // <div data-id=${this.id} id="book${this.id}">
-      // <h2>${this.title}</h2>
-      // <h3>${this.author}</h3>
-      // <p><b>Summary:</b> ${this.summary}</p>
-      // <p><b>Memorable Quotes:</b></p>`;
-      //
-      //
-      // this.quotes.forEach(quote_info => {
-      //   html_string = html_string + `<p>` + quote_info.quote + `</p>`
-      // });
-      //
-      // html_string = html_string + `<button data-id=${this.id} id="edit-button">edit</button>
-      //
-      // </div>
-      // <br><br>`;
-      // return html_string;
-
   }
 
   static findById(id) {
@@ -85,12 +65,15 @@ class Book {
         <label for="summary">Summary</label>
         <textarea id='input-summary' type="text" name="summary" rows="3" value="" class="form-control">${this.summary}</textarea>
       </div>
+      <div class="form-group">
+        <label for="quotes">Quotes</label>
+        <textarea id="input-quote${counter}" type="text" name="summary" rows="3" value="" class="form-control">${this.summary}</textarea>
+      </div>
+
+
       <button type="submit" class="btn btn-primary">Submit</button>
     </fieldset>
     </form>
-
-
-
 
 
 
