@@ -10,36 +10,44 @@
 
   </head>
   <body>
+    <div class="jumbotron">
+      <h1 class="display-3">Welcome to Shelfie</h1>
+      <p class="lead">Your friendly app to help keep track of favorite quotes in literature.</p>
+      <hr class="my-4">
+
+      <div class="form-container">
+        <form id="create-book-form" style="">
+
+          <h3>Create a Book!</h3>
+          <input id="input-title" type="text" name="title" value="" placeholder="Enter your title..." class="input-text">
+          <br><br>
+          <input id="input-author" type="text" name="author" value="" placeholder="Enter your author..." class="input-text">
+          <br><br>
+          <textarea id="input-summary" name="summary" rows="8" cols="80" value="" placeholder="Enter your summary..."></textarea>
+          <br><br>
+          <h3>Create some Quotes!</h3>
+          <textarea id="input-quote1" name="quote" rows="4" cols="80" value="" placeholder="Enter your quote..."></textarea>
+          <br><br>
+          <textarea id="input-quote2" name="quote" rows="4" cols="80" value="" placeholder="Enter your quote..."></textarea>
+          <br><br>
+          <textarea id="input-quote3" name="quote" rows="4" cols="80" value="" placeholder="Enter your quote..."></textarea>
+          <br><br>
+          <textarea id="input-quote4" name="quote" rows="4" cols="80" value="" placeholder="Enter your quote..."></textarea>
+          <br><br>
+          <textarea id="input-quote5" name="quote" rows="4" cols="80" value="" placeholder="Enter your quote..."></textarea>
+          <br><br>
+
+          <!-- <button type="button" class="btn btn-secondary">Secondary</button> -->
+          <input id="create-button" type="submit" name="submit" value="Create New Book" class="btn btn-secondary">
 
 
+        </form>
 
-    <div class="form-container">
-      <form id="create-book-form" style="">
-        <h1>Welcome to Shelfie</h1>
-        <h3>Create a Book!</h3>
-        <input id="input-title" type="text" name="title" value="" placeholder="Enter your title..." class="input-text">
-        <br><br>
-        <input id="input-author" type="text" name="author" value="" placeholder="Enter your author..." class="input-text">
-        <br><br>
-        <textarea id="input-summary" name="summary" rows="8" cols="80" value="" placeholder="Enter your summary..."></textarea>
-        <br><br>
-        <h3>Create some Quotes!</h3>
-        <textarea id="input-quote1" name="quote" rows="4" cols="80" value="" placeholder="Enter your quote..."></textarea>
-        <br><br>
-        <textarea id="input-quote2" name="quote" rows="4" cols="80" value="" placeholder="Enter your quote..."></textarea>
-        <br><br>
-        <textarea id="input-quote3" name="quote" rows="4" cols="80" value="" placeholder="Enter your quote..."></textarea>
-        <br><br>
-        <textarea id="input-quote4" name="quote" rows="4" cols="80" value="" placeholder="Enter your quote..."></textarea>
-        <br><br>
-        <textarea id="input-quote5" name="quote" rows="4" cols="80" value="" placeholder="Enter your quote..."></textarea>
-        <br><br>
-        <input id="create-button" type="submit" name="submit" value="Create New Book" class="submit">
+      </div>
 
-
-      </form>
 
     </div>
+
 
     <div id="book-container">
     </div>
