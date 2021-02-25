@@ -66,50 +66,59 @@ class Book {
         <textarea id='input-summary' type="text" name="summary" rows="3" value="" class="form-control">${this.summary}</textarea>
       </div>
       <div class="form-group">
-        <label for="quotes">Quotes</label>
-        <textarea id="input-quote${counter}" type="text" name="summary" rows="3" value="" class="form-control">${this.summary}</textarea>
+        <label for="quotes">Quotes</label>`;
+
+        let counter = 0
+        this.quotes.forEach(quote_info => {
+          counter +=1;
+          html_string = html_string + `<textarea id="input-quote${counter}" name="quote${quote_info.id}" data-quoteid="${quote_info.id}" rows="3" class="form-control">` + quote_info.quote + `</textarea> <br>`
+        });
+
+        // act as a check to check quote_count and then for blank fields
+        html_string = html_string + `<input id='quote_count' type="hidden" name="quote_count" value="${counter}">`
+        html_string = html_string + `
+        <input id='edit-button' type="submit" name="submit" value="Save Book" class="btn btn-primary">
+
+
       </div>
-
-
-      <button type="submit" class="btn btn-primary">Submit</button>
     </fieldset>
     </form>
-
-
-
-    <form data-id=${this.id}>
-      <h3>Edit a Book!</h3>
-
-      <label>Title</label>
-      <input id='input-title' type="text" name="title" value="${this.title}" class="input-text">
-      <br><br>
-
-      <label>Author</label>
-      <input id='input-author' type="text" name="author" value="${this.author}" class="input-text">
-      <br><br>
-
-      <label>Summary:</label><br>
-      <textarea id="input-summary" name="summary" rows="8" cols="80" value="">${this.summary}</textarea>
-      <br><br>
-      <label>Quotes:</label>
-      <br>`;
-
-      let counter = 0
-      this.quotes.forEach(quote_info => {
-        counter +=1;
-        html_string = html_string + `<textarea id="input-quote${counter}" name="quote${quote_info.id}" data-quoteid="${quote_info.id}" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
-
-      });
-      // act as a check to check quote_count and then for blank fields
-      html_string = html_string + `<input id='quote_count' type="hidden" name="quote_count" value="${counter}">`
-      html_string = html_string + `<br><br>
-      <input id='edit-button' type="submit" name="submit" value="Save Book" class="submit">
-
-    </form>
     `;
-    return html_string
 
-  }
+    return html_string
+ }
+
+    // <form data-id=${this.id}>
+    //   <h3>Edit a Book!</h3>
+    //
+    //   <label>Title</label>
+    //   <input id='input-title' type="text" name="title" value="${this.title}" class="input-text">
+    //   <br><br>
+    //
+    //   <label>Author</label>
+    //   <input id='input-author' type="text" name="author" value="${this.author}" class="input-text">
+    //   <br><br>
+    //
+    //   <label>Summary:</label><br>
+    //   <textarea id="input-summary" name="summary" rows="8" cols="80" value="">${this.summary}</textarea>
+    //   <br><br>
+    //   <label>Quotes:</label>
+    //   <br>`;
+    //
+    //   let counter = 0
+    //   this.quotes.forEach(quote_info => {
+    //     counter +=1;
+    //     html_string = html_string + `<textarea id="input-quote${counter}" name="quote${quote_info.id}" data-quoteid="${quote_info.id}" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
+    //
+    //   });
+    //   // act as a check to check quote_count and then for blank fields
+    //   html_string = html_string + `<input id='quote_count' type="hidden" name="quote_count" value="${counter}">`
+    //   html_string = html_string + `<br><br>
+    //   <input id='edit-button' type="submit" name="submit" value="Save Book" class="submit">
+    //
+    // </form>
+    // `;
+    // return html_string
 
 
   renderNewQuote() {
