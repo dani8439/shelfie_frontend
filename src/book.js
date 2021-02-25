@@ -67,7 +67,34 @@ class Book {
 
   renderUpdateForm() {
     let html_string = ''
-    html_string = html_string + `<form data-id=${this.id}>
+    html_string = html_string + `
+    <form data-id=${this.id}>
+    <fieldset>
+      <legend>Edit A Book</legend>
+      <div class="form-group row">
+      </div>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="title" id='input-title' type="text" name="title" value="${this.title}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="author" id='input-author' type="text" name="author" value="${this.author}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="summary">Summary</label>
+        <textarea id='input-summary' type="text" name="summary" rows="3" value="" class="form-control">${this.summary}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+    </form>
+
+
+
+
+
+
+    <form data-id=${this.id}>
       <h3>Edit a Book!</h3>
 
       <label>Title</label>
@@ -87,11 +114,8 @@ class Book {
       let counter = 0
       this.quotes.forEach(quote_info => {
         counter +=1;
-        // need the data-id? ${this.id}??
-        // quote${quote_info.id}
         html_string = html_string + `<textarea id="input-quote${counter}" name="quote${quote_info.id}" data-quoteid="${quote_info.id}" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
 
-      //  html_string = html_string + `<textarea id="input-quote" name="quote" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
       });
       // act as a check to check quote_count and then for blank fields
       html_string = html_string + `<input id='quote_count' type="hidden" name="quote_count" value="${counter}">`
