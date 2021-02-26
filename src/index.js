@@ -119,9 +119,7 @@ function getBooks() {
 
     const quoteCount = e.target.querySelector("#quote_count").value;
     // goes in the loop as grabbing five.
-    // const quote_id = e.target.querySelector("#quote.id").value;
     const newQuotes = [];
-    // // for (let i=1 to count)
     for (let i=1; i <= quoteCount; i++) {
       // hash of data for the attributes.
       const quoteId = e.target.querySelector("#input-quote"+i).dataset.quoteid;
