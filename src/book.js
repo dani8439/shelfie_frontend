@@ -77,7 +77,7 @@ class Book {
         // act as a check to check quote_count and then for blank fields
         html_string = html_string + `<input id='quote_count' type="hidden" name="quote_count" value="${counter}">`
         html_string = html_string + `
-        <input id='edit-button' type="submit" name="submit" value="Save Book" class="btn btn-primary">
+        <input id='edit-button' type="submit" name="submit" value="Save Book" class="btn btn-secondary">
 
 
       </div>
@@ -92,15 +92,17 @@ class Book {
 
   renderNewQuote() {
     let html_string = ''
-    html_string = html_string + `<form data-id=${this.id}>
-    <h3>Add a Quote!</h3>
+    html_string = html_string + `
+    <form data-id=${this.id}>
+      <fieldset>
+        <legend>Add A Quote</legend>
 
-    <label>Quote:</label><br>
-    <textarea id="input-quote" name="quote" rows="8" cols="80" value="" data-bookid="${this.id}"></textarea>
-    <br><br>
-
-    <input id='save-quote' type="submit" name="submit" value="Save Quote" class="submit">
-
+        <div class="form-group">
+          <label for="quote">Quote</label>
+          <textarea class="form-control" id="input-quote" name="quote" rows="3" value="" data-bookid="${this.id}"></textarea>
+        </div>
+        <button type="submit" id="save-quote" class="btn btn-secondary">Save Quote</button>
+      </fieldset>
     </form>
     `;
     return html_string
