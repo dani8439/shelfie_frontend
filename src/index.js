@@ -133,7 +133,6 @@ function getBooks() {
     console.log(newQuotes)
 
     patchBook(book, title, author, summary, newQuotes)
-    // patchBook(book, title, author, input_quotes)
   }
 
 
