@@ -103,6 +103,7 @@ function getBooks() {
       document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
 
     })
+    .then(location.reload())
     // .catch(err => console.log(err))
   }
 

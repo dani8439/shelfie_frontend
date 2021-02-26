@@ -17,7 +17,7 @@ class Book {
     html_string = html_string + `
     <div class="card border-dark mb-3" style="max-width: 50rem;">
     <div class="card-header"></div>
-      <div class="card-body">
+      <div class="card-body" id="book${this.id}">
         <h2 class="card-title">${this.title}</h2>
         <h4 class="card-title">${this.author}</h4>
         <p class="card-text"><b>Summary:</b> ${this.summary}</p>
