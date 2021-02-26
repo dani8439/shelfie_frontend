@@ -119,9 +119,7 @@ function getBooks() {
 
     const quoteCount = e.target.querySelector("#quote_count").value;
     // goes in the loop as grabbing five.
-    // const quote_id = e.target.querySelector("#quote.id").value;
     const newQuotes = [];
-    // // for (let i=1 to count)
     for (let i=1; i <= quoteCount; i++) {
       // hash of data for the attributes.
       const quoteId = e.target.querySelector("#input-quote"+i).dataset.quoteid;
@@ -135,7 +133,6 @@ function getBooks() {
     console.log(newQuotes)
 
     patchBook(book, title, author, summary, newQuotes)
-    // patchBook(book, title, author, input_quotes)
   }
 
 
@@ -202,13 +199,3 @@ function getBooks() {
     // );
 
   }
-
-
-
-
-// for (const book of data) {
-//   console.log(book.attributes.title);
-//   for (const quote of book.attributes.quotes) {
-//     console.log(quote.attributes.quote);
-//   }
-// }

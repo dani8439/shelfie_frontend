@@ -14,21 +14,25 @@ class Book {
 
   renderBookCard() {
     let html_string = ''
-    html_string = html_string + `<div data-id=${this.id} id="book${this.id}">
-      <h2>${this.title}</h2>
-      <h3>${this.author}</h3>
-      <p><b>Summary:</b> ${this.summary}</p>
-      <p><b>Memorable Quotes:</b></p>`;
+    html_string = html_string + `
+    <div class="card border-dark mb-3" style="max-width: 50rem;">
+    <div class="card-header"></div>
+      <div class="card-body">
+        <h2 class="card-title">${this.title}</h2>
+        <h4 class="card-title">${this.author}</h4>
+        <p class="card-text"><b>Summary:</b> ${this.summary}</p>
+        <p class="card-text"><b>Memorable Quotes:</b></p>`;
 
+        this.quotes.forEach(quote_info => {
+          html_string = html_string + `<p>` + quote_info.quote + `</p>`
+        });
 
-      this.quotes.forEach(quote_info => {
-        html_string = html_string + `<p>` + quote_info.quote + `</p>`
-      });
+        html_string = html_string + `<button data-id=${this.id} id="edit-button" class="btn btn-outline-secondary">edit</button>
 
-      html_string = html_string + `<button data-id=${this.id} id="edit-button">edit</button>
-
+        </div>
+        <br><br>
       </div>
-      <br><br>`;
+      </div>`;
       return html_string;
 
   }
@@ -38,86 +42,67 @@ class Book {
     // parseInt(book.id) === id
   }
 
-  // static renderQuotes(id, bookAttributes) {
-  //   Book.all.quotes.forEach(function(quote) {
-  //     if (Book.findById() === id) {
-  //       console.log(quote.id, quote.quote)
-  //     }
-  //   })
-  // }
-
-  // static renderQuotes() {
-  //   this.all.quotes.forEach(quote_info => {
-  //     quote_info.quote
-  //   })
-  // }
-
-  // static renderQuotes(bookAttributes) {
-  //   for (const quotes in bookAttributes.quotes) {
-  //     if (bookAttributes.quotes.hasOwnProperty(quote)) {
-  //       renderQuote(bookAttributes.quotes[quote])
-  //     }
-  //   }
-  // }
-
-  // book.quotes.forEach(function(quote) {
-  //   console.log(quote.id, quote.quote)
-  // })
-
   // Book.all.forEach(book => (book.quotes.forEach(function(quote) { console.log( quote.id, quote.quote)})))
   // Book.all.forEach(book => book.quotes.forEach(function(quote) { console.log(book.title, quote.id, quote.quote)}))
 
   renderUpdateForm() {
     let html_string = ''
-    html_string = html_string + `<form data-id=${this.id}>
-      <h3>Edit a Book!</h3>
+    html_string = html_string + `
+    <form data-id=${this.id}>
+    <fieldset>
+      <legend>Edit A Book</legend>
+      <div class="form-group row">
+      </div>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="title" id='input-title' type="text" name="title" value="${this.title}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="author" id='input-author' type="text" name="author" value="${this.author}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="summary">Summary</label>
+        <textarea id='input-summary' type="text" name="summary" rows="3" value="" class="form-control">${this.summary}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="quotes">Quotes</label>`;
 
-      <label>Title</label>
-      <input id='input-title' type="text" name="title" value="${this.title}" class="input-text">
-      <br><br>
+        let counter = 0
+        this.quotes.forEach(quote_info => {
+          counter +=1;
+          html_string = html_string + `<textarea id="input-quote${counter}" name="quote${quote_info.id}" data-quoteid="${quote_info.id}" rows="3" class="form-control">` + quote_info.quote + `</textarea> <br>`
+        });
 
-      <label>Author</label>
-      <input id='input-author' type="text" name="author" value="${this.author}" class="input-text">
-      <br><br>
+        // act as a check to check quote_count and then for blank fields
+        html_string = html_string + `<input id='quote_count' type="hidden" name="quote_count" value="${counter}">`
+        html_string = html_string + `
+        <input id='edit-button' type="submit" name="submit" value="Save Book" class="btn btn-secondary">
 
-      <label>Summary:</label><br>
-      <textarea id="input-summary" name="summary" rows="8" cols="80" value="">${this.summary}</textarea>
-      <br><br>
-      <label>Quotes:</label>
-      <br>`;
 
-      let counter = 0
-      this.quotes.forEach(quote_info => {
-        counter +=1;
-        // need the data-id? ${this.id}??
-        // quote${quote_info.id}
-        html_string = html_string + `<textarea id="input-quote${counter}" name="quote${quote_info.id}" data-quoteid="${quote_info.id}" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
-
-      //  html_string = html_string + `<textarea id="input-quote" name="quote" rows="5" cols="80">` + quote_info.quote + `</textarea><br><br>`
-      });
-      // act as a check to check quote_count and then for blank fields
-      html_string = html_string + `<input id='quote_count' type="hidden" name="quote_count" value="${counter}">`
-      html_string = html_string + `<br><br>
-      <input id='edit-button' type="submit" name="submit" value="Save Book" class="submit">
-
+      </div>
+    </fieldset>
     </form>
     `;
-    return html_string
 
-  }
+    return html_string
+ }
+
 
 
   renderNewQuote() {
     let html_string = ''
-    html_string = html_string + `<form data-id=${this.id}>
-    <h3>Add a Quote!</h3>
+    html_string = html_string + `
+    <form data-id=${this.id}>
+      <fieldset>
+        <legend>Add A Quote</legend>
 
-    <label>Quote:</label><br>
-    <textarea id="input-quote" name="quote" rows="8" cols="80" value="" data-bookid="${this.id}"></textarea>
-    <br><br>
-
-    <input id='save-quote' type="submit" name="submit" value="Save Quote" class="submit">
-
+        <div class="form-group">
+          <label for="quote">Quote</label>
+          <textarea class="form-control" id="input-quote" name="quote" rows="3" value="" data-bookid="${this.id}"></textarea>
+        </div>
+        <button type="submit" id="save-quote" class="btn btn-secondary">Save Quote</button>
+      </fieldset>
     </form>
     `;
     return html_string
