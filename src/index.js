@@ -103,6 +103,7 @@ function getBooks() {
       document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
 
     })
+    .then(location.reload())
     // .catch(err => console.log(err))
   }
 
@@ -192,10 +193,10 @@ function getBooks() {
     .then(location.reload())
     // creates an anonymous function that gets called when the .then happens.
     // need to research.
-    // .then(() => {
-    //   const element = document.querySelector(`book${book.id}`);
-    //   element.scrollIntoView();
-    //   }
-    // );
+    .then(() => {
+      const element = document.getElementById(`book${book.id}`);
+      element.scrollIntoView();
+      }
+    );
 
   }
