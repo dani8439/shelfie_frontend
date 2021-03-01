@@ -27,7 +27,7 @@ class Book {
           html_string = html_string + `<p>` + quote_info.quote + `</p>`
         });
 
-        html_string = html_string + `<button data-id=${this.id} id="edit-button" class="btn btn-outline-secondary">edit</button>
+        html_string = html_string + `<button data-id=${this.id} id="edit-button" class="btn btn-outline-secondary">Edit</button>
 
         </div>
         <br><br>
@@ -78,7 +78,6 @@ class Book {
         html_string = html_string + `<input id='quote_count' type="hidden" name="quote_count" value="${counter}">`
         html_string = html_string + `
         <input id='edit-button' type="submit" name="submit" value="Save Book" class="btn btn-secondary">
-
 
       </div>
     </fieldset>
