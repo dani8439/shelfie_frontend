@@ -12,6 +12,7 @@ class App {
   attachEventListeners() {
     document.querySelector('#book-container').addEventListener('click', this.handleEditClick);
     document.querySelector('#update-book').addEventListener('submit', this.handleFormSubmit);
+  }
     // document.querySelector('#update-book').addEventListener('submit', e => {
     //   e.preventDefault();
     //   console.log('clicked');
@@ -88,4 +89,3 @@ class App {
       document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
     }
   }
-}
