@@ -42,6 +42,8 @@ class App {
     // })
 
     createBooks(books) {
+      debugger
+      // books is not an object
       books.forEach(book => {
         new Book(book);
       });
