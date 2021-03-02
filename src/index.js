@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const app = new App();
   app.attachEventListeners();
-  app.adapter.fetchBooks().then(app.createBooks);
+  // app.adapter.fetchBooks().then(app.createBooks);
 
   // app.adapter.fetchBooks().then(json => {
   //   json.forEach(book => {
