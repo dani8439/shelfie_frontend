@@ -4,16 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // fetch and load books
   getBooks()
 
-  const app = new App();
-  app.attachEventListeners();
-  // app.adapter.fetchBooks().then(app.createBooks);
-
-  // app.adapter.fetchBooks().then(json => {
-  //   json.forEach(book => {
-  //     document.querySelector('#book-container').innerHTML += new Book(book).renderBookCard();
-  //   });
-  // });
-
   const createBookForm = document.querySelector("#create-book-form");
 
   // creating event listener on submit event in browser
@@ -117,58 +107,58 @@ function getBooks() {
     // .catch(err => console.log(err))
   }
 
-  // // Grab all the info from the updated Book
-  // function updateFormHandler(e) {
-  //   e.preventDefault();
-  //   const id = e.target.dataset.id;
-  //   const book = Book.findById(id);
-  //   // debugger;
-  //   const title = e.target.querySelector("#input-title").value;
-  //   const author = e.target.querySelector("#input-author").value;
-  //   const summary = e.target.querySelector("#input-summary").value;
-  //
-  //
-  //   const quoteCount = e.target.querySelector("#quote_count").value;
-  //   // goes in the loop as grabbing five.
-  //   const newQuotes = [];
-  //   for (let i=1; i <= quoteCount; i++) {
-  //     // hash of data for the attributes.
-  //     const quoteId = e.target.querySelector("#input-quote"+i).dataset.quoteid;
-  //     const quoteValue = e.target.querySelector("#input-quote"+i).value;
-  //     const quote = {
-  //       id: quoteId,
-  //       quote: quoteValue
-  //     }
-  //     newQuotes.push(quote)
-  //   }
-  //   console.log(newQuotes)
-  //
-  //   patchBook(book, title, author, summary, newQuotes)
-  // }
-  //
-  //
-  //
-  //
-  // function patchBook(book, title, author, summary, newQuotes) {
-  //   console.log(title, author, summary, newQuotes)
-  //   fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type' : 'application/json',
-  //       Accept: 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       title: title,
-  //       author: author,
-  //       summary: summary,
-  //       quotes_attributes: newQuotes
-  //
-  //     })
-  //   })
-  //   .then(res => res.json())
-  //   .then(updatedBook => console.log(updatedBook));
-  //
-  // }
+  // Grab all the info from the updated Book
+  function updateFormHandler(e) {
+    e.preventDefault();
+    const id = e.target.dataset.id;
+    const book = Book.findById(id);
+    // debugger;
+    const title = e.target.querySelector("#input-title").value;
+    const author = e.target.querySelector("#input-author").value;
+    const summary = e.target.querySelector("#input-summary").value;
+
+
+    const quoteCount = e.target.querySelector("#quote_count").value;
+    // goes in the loop as grabbing five.
+    const newQuotes = [];
+    for (let i=1; i <= quoteCount; i++) {
+      // hash of data for the attributes.
+      const quoteId = e.target.querySelector("#input-quote"+i).dataset.quoteid;
+      const quoteValue = e.target.querySelector("#input-quote"+i).value;
+      const quote = {
+        id: quoteId,
+        quote: quoteValue
+      }
+      newQuotes.push(quote)
+    }
+    console.log(newQuotes)
+
+    patchBook(book, title, author, summary, newQuotes)
+  }
+
+
+
+
+  function patchBook(book, title, author, summary, newQuotes) {
+    console.log(title, author, summary, newQuotes)
+    fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type' : 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        title: title,
+        author: author,
+        summary: summary,
+        quotes_attributes: newQuotes
+
+      })
+    })
+    .then(res => res.json())
+    .then(updatedBook => console.log(updatedBook));
+
+  }
 
 
   function newQuoteHandler(e) {
