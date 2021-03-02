@@ -1,5 +1,4 @@
 class App {
-
   attachEventListeners() {
     document.querySelector('#update-book').addEventListener('submit', e => {
       console.log('clicked');
