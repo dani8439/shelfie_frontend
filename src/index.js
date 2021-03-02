@@ -3,6 +3,8 @@ const endPoint = "http://localhost:3000/api/v1/books"
 document.addEventListener('DOMContentLoaded', () => {
   // fetch and load books
   getBooks()
+  const app = new App();
+  app.attachEventListeners();
 
   const createBookForm = document.querySelector("#create-book-form");
 
@@ -11,15 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
   createFormHandler(e))
 
   // listen for 'click' event on book container
-  // const editButton = document.querySelector("#edit-button")
+
   const bookContainer = document.querySelector('#book-container')
   bookContainer.addEventListener('click', e => {
-  // editButton.addEventListener('click', e => {
-    // do not need to parseInt as already a string
     const id = e.target.dataset.id;
     const book = Book.findById(id);
     // debugger
-    // console.log(book);
     document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
     document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
   });
