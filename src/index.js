@@ -5,14 +5,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   // async await in order to create elements before attaching events to them so code doesn't get stuck.
   await getBooks()
 
-  const createBookForm = document.querySelector("#create-book-form");
+  // const createBookForm = document.querySelector("#create-book-form");
 
   // creating event listener on submit event in browser
-  // createBookForm.addEventListener("submit", (e) =>
-  // createFormHandler(e))
-  //
-  // // listen for 'click' event on book container
-  // // const editButton = document.querySelector("#edit-button")
+  document.querySelector("#create-book-form").addEventListener("submit", (e) => createFormHandler(e))
+
+  // listen for 'click' event on book container
+  // const editButton = document.querySelector("#edit-button")
   // const bookContainer = document.querySelector('#book-container')
   // bookContainer.addEventListener('click', e => {
   // // editButton.addEventListener('click', e => {
@@ -26,9 +25,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   // });
   //
   // // listen for the submit event of the edit form and handle the data
-  // document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
-  // document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
-  document.querySelector('#delete-button').addEventListener('click', e => deleteBook(e))
+  document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
+  document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
+  document.querySelectorAll('#delete-button').forEach(item => { item.addEventListener('click', e => deleteBook(e)) })
+
+  // document.querySelectorAll('#edit-button').addEventListener('click', e => editBook(e))
+
 
 })
 
@@ -216,6 +218,15 @@ async function getBooks() {
     const book = Book.findById(bookId);
     book.remove();
     console.log('removed');
+  }
+
+  function editBook(e) {
+    const id = e.srcElement.dataset.id;
+    const book = Book.findById(id);
+    // debugger
+    // console.log(book);
+    document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
+    document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
   }
 
 
