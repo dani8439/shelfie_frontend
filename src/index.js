@@ -1,8 +1,10 @@
 const endPoint = "http://localhost:3000/api/v1/books"
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // fetch and load books
-  getBooks()
+  console.log('x')
+  await getBooks()
+  console.log('z')
 
   const createBookForm = document.querySelector("#create-book-form");
 
@@ -27,22 +29,35 @@ document.addEventListener('DOMContentLoaded', () => {
   // listen for the submit event of the edit form and handle the data
   document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
   document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
+  console.log(document.getElementById("delete-book"))
+  console.log(document.getElementById("update-book"))
   // document.querySelector('#delete-book').addEventListener('click', e => deleteFormHandler(e))
 
 })
 
 // Fetch is making a get request.
-function getBooks() {
-  fetch(endPoint)
-  .then(response => response.json())
-  .then(books => {
+async function getBooks() {
+  // wait until fetch is done.
+  const response = await fetch(endPoint)
+  const books = await response.json()
     books.data.forEach(book => {
       // render(book)
       const newBook = new Book(book.id, book.attributes);
       document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
-
     })
-  })
+
+  // console.log(books);
+
+  // fetch(endPoint)
+  // .then(response => response.json())
+  // .then(books => {
+  //   books.data.forEach(book => {
+  //     // render(book)
+  //     const newBook = new Book(book.id, book.attributes);
+  //     document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
+  //
+  //   })
+  // })
 }
 
 
