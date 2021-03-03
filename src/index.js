@@ -5,31 +5,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   // async await in order to create elements before attaching events to them so code doesn't get stuck.
   await getBooks()
 
-  // const createBookForm = document.querySelector("#create-book-form");
 
   // creating event listener on submit event in browser
   document.querySelector("#create-book-form").addEventListener("submit", (e) => createFormHandler(e))
 
-  // listen for 'click' event on book container
-  // const editButton = document.querySelector("#edit-button")
-  // const bookContainer = document.querySelector('#book-container')
-  // bookContainer.addEventListener('click', e => {
-  // // editButton.addEventListener('click', e => {
-  //   // do not need to parseInt as already a string
-  //   const id = e.target.dataset.id;
-  //   const book = Book.findById(id);
-  //   // debugger
-  //   // console.log(book);
-  //   document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
-  //   document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
-  // });
-  //
   // // listen for the submit event of the edit form and handle the data
   document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
   document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
   document.querySelectorAll('#delete-button').forEach(item => { item.addEventListener('click', e => deleteBook(e)) })
-
-  // document.querySelectorAll('#edit-button').addEventListener('click', e => editBook(e))
+  document.querySelectorAll('#edit-button').forEach(item => { item.addEventListener('click', e => editBook(e)) })
 
 
 })
@@ -228,18 +212,3 @@ async function getBooks() {
     document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
     document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
   }
-
-
-    // fetch(`http://localhost:3000/api/v1/books/${book.id}`), {
-    //   method: 'DELETE',
-    //   headers: {
-    //     'Content-type': 'application/json',
-    //     'Accept': 'application/json'
-    //   }
-    //   .then(resp => res.json())
-    //   .then(book => {
-    //     book.remove();
-    //     console.log('removed');
-    //   })
-    // }
-  // }
