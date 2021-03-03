@@ -22,13 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // console.log(book);
     document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
     document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
-    // document.querySelector('#delete-book').innerHTML = book.renderNewForm();
   });
 
   // listen for the submit event of the edit form and handle the data
   document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
   document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
-  // document.querySelector('#delete-book').addEventListener('submit', e => deleteFormHandler(e))
+  // document.querySelector('#delete-book').addEventListener('click', e => deleteFormHandler(e))
 
 })
 
@@ -204,18 +203,18 @@ function getBooks() {
   }
 
 
-  function deleteBook(book, id, title, author, summary, quotes) {
-  console.log(book, id, title, author, summary, quotes)
-  fetch(`http://localhost:3000/api/v1/books/${book.id}`), {
-    method: 'DELETE',
-    headers: {
-      'Content-type': 'application/json',
-      'Accept': 'application/json'
+  function deleteBook() {
+    console.log('I have been clicked');
+    // fetch(`http://localhost:3000/api/v1/books/${book.id}`), {
+    //   method: 'DELETE',
+    //   headers: {
+    //     'Content-type': 'application/json',
+    //     'Accept': 'application/json'
+    //   }
+    //   .then(resp => res.json())
+    //   .then(book => {
+    //     book.remove();
+    //     console.log('removed');
+    //   })
     }
-    .then(resp => res.json())
-    .then(book => {
-      book.remove();
-      console.log('removed');
-    })
-  }
-}
+  // }
