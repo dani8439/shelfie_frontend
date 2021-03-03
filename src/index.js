@@ -8,26 +8,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   const createBookForm = document.querySelector("#create-book-form");
 
   // creating event listener on submit event in browser
-  createBookForm.addEventListener("submit", (e) =>
-  createFormHandler(e))
-
-  // listen for 'click' event on book container
-  // const editButton = document.querySelector("#edit-button")
-  const bookContainer = document.querySelector('#book-container')
-  bookContainer.addEventListener('click', e => {
-  // editButton.addEventListener('click', e => {
-    // do not need to parseInt as already a string
-    const id = e.target.dataset.id;
-    const book = Book.findById(id);
-    // debugger
-    // console.log(book);
-    document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
-    document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
-  });
-
-  // listen for the submit event of the edit form and handle the data
-  document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
-  document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
+  // createBookForm.addEventListener("submit", (e) =>
+  // createFormHandler(e))
+  //
+  // // listen for 'click' event on book container
+  // // const editButton = document.querySelector("#edit-button")
+  // const bookContainer = document.querySelector('#book-container')
+  // bookContainer.addEventListener('click', e => {
+  // // editButton.addEventListener('click', e => {
+  //   // do not need to parseInt as already a string
+  //   const id = e.target.dataset.id;
+  //   const book = Book.findById(id);
+  //   // debugger
+  //   // console.log(book);
+  //   document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
+  //   document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
+  // });
+  //
+  // // listen for the submit event of the edit form and handle the data
+  // document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
+  // document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
   document.querySelector('#delete-button').addEventListener('click', e => deleteBook(e))
 
 })
@@ -43,19 +43,6 @@ async function getBooks() {
       const newBook = new Book(book.id, book.attributes);
       document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
     })
-
-  // console.log(books);
-
-  // fetch(endPoint)
-  // .then(response => response.json())
-  // .then(books => {
-  //   books.data.forEach(book => {
-  //     // render(book)
-  //     const newBook = new Book(book.id, book.attributes);
-  //     document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
-  //
-  //   })
-  // })
 }
 
 
@@ -217,17 +204,19 @@ async function getBooks() {
 
 
   async function deleteBook(e) {
-    console.log('I have been clicked');
-    console.log(e);
-    console.log(e.srcElement.dataset.id);
-    const response = await fetch(`http://localhost:3000/api/v1/books/${e.srcElement.dataset.id}`), {
+    const bookId = e.srcElement.dataset.id;
+    const response = await fetch(`http://localhost:3000/api/v1/books/${bookId}`, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'
       }
-    }
-
+    })
+    const resp = await response.json();
+    const book = Book.findById(bookId);
+    book.remove();
+    console.log('removed');
+  }
 
 
     // fetch(`http://localhost:3000/api/v1/books/${book.id}`), {

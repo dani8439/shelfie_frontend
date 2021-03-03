@@ -15,7 +15,7 @@ class Book {
   renderBookCard() {
     let html_string = ''
     html_string = html_string + `
-    <div class="card border-dark mb-3" style="max-width: 50rem;">
+    <div class="card border-dark mb-3" style="max-width: 50rem;" id="book-wrapper${this.id}">
     <div class="card-header"></div>
       <div class="card-body" id="book${this.id}">
         <h2 class="card-title">${this.title}</h2>
@@ -42,6 +42,11 @@ class Book {
   static findById(id) {
     return this.all.find(book => book.id === id);
     // parseInt(book.id) === id
+  }
+
+  remove() {
+    const bookElement = document.getElementById(`book-wrapper${this.id}`)
+    bookElement.remove();
   }
 
   // Book.all.forEach(book => (book.quotes.forEach(function(quote) { console.log( quote.id, quote.quote)})))
