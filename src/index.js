@@ -2,9 +2,8 @@ const endPoint = "http://localhost:3000/api/v1/books"
 
 document.addEventListener('DOMContentLoaded', async () => {
   // fetch and load books
-  console.log('x')
+  // async await in order to create elements before attaching events to them so code doesn't get stuck.
   await getBooks()
-  console.log('z')
 
   const createBookForm = document.querySelector("#create-book-form");
 
@@ -29,15 +28,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   // listen for the submit event of the edit form and handle the data
   document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
   document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
-  console.log(document.getElementById("delete-book"))
-  console.log(document.getElementById("update-book"))
-  // document.querySelector('#delete-book').addEventListener('click', e => deleteFormHandler(e))
+  document.querySelector('#delete-button').addEventListener('click', e => deleteBook(e))
 
 })
 
 // Fetch is making a get request.
 async function getBooks() {
   // wait until fetch is done.
+  // because delete button was created by code but not until after ajax returned bookData.
   const response = await fetch(endPoint)
   const books = await response.json()
     books.data.forEach(book => {
@@ -218,8 +216,20 @@ async function getBooks() {
   }
 
 
-  function deleteBook() {
+  async function deleteBook(e) {
     console.log('I have been clicked');
+    console.log(e);
+    console.log(e.srcElement.dataset.id);
+    const response = await fetch(`http://localhost:3000/api/v1/books/${e.srcElement.dataset.id}`), {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }
+
+
+
     // fetch(`http://localhost:3000/api/v1/books/${book.id}`), {
     //   method: 'DELETE',
     //   headers: {
@@ -231,5 +241,5 @@ async function getBooks() {
     //     book.remove();
     //     console.log('removed');
     //   })
-    }
+    // }
   // }
