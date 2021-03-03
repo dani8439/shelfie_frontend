@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   // // listen for the submit event of the edit form and handle the data
   document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
   document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
-  document.querySelectorAll('#delete-button').forEach(item => { item.addEventListener('click', e => deleteBook(e)) })
-  document.querySelectorAll('#edit-button').forEach(item => { item.addEventListener('click', e => editBook(e)) })
+  document.querySelectorAll('.book-delete-button').forEach(item => { item.addEventListener('click', e => deleteBook(e)) })
+  document.querySelectorAll('.book-edit-button').forEach(item => { item.addEventListener('click', e => editBook(e)) })
 
 
 })
@@ -180,8 +180,9 @@ async function getBooks() {
     .then(location.reload())
     // creates an anonymous function that gets called when the .then happens.
     // need to research.
+    // doesn't work because reloading the page, and everything was forgotten.
     // .then(() => {
-    //   const element = document.querySelector(`book${book.id}`);
+    //   const element = document.querySelector(`#book${book.id}`);
     //   element.scrollIntoView();
     //   }
     // );
