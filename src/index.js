@@ -178,6 +178,7 @@ async function getBooks() {
     .then(updatedBook => console.log(updatedBook))
     // hacky to force reload the page with new quote. sledge hammer, how would YOU DO IT?
     .then(location.reload())
+    // getBooks() -- reload the data from the server, repopulate the div get new info without reloading the page. 
     // creates an anonymous function that gets called when the .then happens.
     // need to research.
     // doesn't work because reloading the page, and everything was forgotten.
