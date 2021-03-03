@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   await getBooks()
 
 
+  // move .then for all of the below for tomorrow? 
+
+
   // creating event listener on submit event in browser
   document.querySelector("#create-book-form").addEventListener("submit", (e) => createFormHandler(e))
 
@@ -178,7 +181,7 @@ async function getBooks() {
     .then(updatedBook => console.log(updatedBook))
     // hacky to force reload the page with new quote. sledge hammer, how would YOU DO IT?
     .then(location.reload())
-    // getBooks() -- reload the data from the server, repopulate the div get new info without reloading the page. 
+    // getBooks() -- reload the data from the server, repopulate the div get new info without reloading the page.
     // creates an anonymous function that gets called when the .then happens.
     // need to research.
     // doesn't work because reloading the page, and everything was forgotten.
