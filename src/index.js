@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // do not need to parseInt as already a string
     const id = e.target.dataset.id;
     const book = Book.findById(id);
-    // debugger
-    // console.log(book);
     document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
     document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
   });
@@ -100,7 +98,6 @@ function getBooks() {
 
     })
     .then(location.reload())
-    // .catch(err => console.log(err))
   }
 
   // Grab all the info from the updated Book
@@ -131,7 +128,6 @@ function getBooks() {
 
     patchBook(book, title, author, summary, newQuotes)
   }
-
 
 
 

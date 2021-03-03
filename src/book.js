@@ -15,7 +15,7 @@ class Book {
   renderBookCard() {
     let html_string = ''
     html_string = html_string + `
-    <div class="card border-dark mb-3" style="max-width: 50rem;">
+    <div class="card border-dark mb-3" style="max-width: 50rem;" id="book-wrapper${this.id}">
     <div class="card-header"></div>
       <div class="card-body" id="book${this.id}">
         <h2 class="card-title">${this.title}</h2>
@@ -27,7 +27,7 @@ class Book {
           html_string = html_string + `<p>` + quote_info.quote + `</p>`
         });
 
-        html_string = html_string + `<button data-id=${this.id} id="edit-button" class="btn btn-outline-secondary">Edit</button>
+        html_string = html_string + `<button data-id=${this.id} id="edit-button${this.id}" class="btn btn-outline-secondary book-edit-button">Edit</button>
 
         </div>
         <br><br>
