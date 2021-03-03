@@ -27,9 +27,9 @@ class Book {
           html_string = html_string + `<p>` + quote_info.quote + `</p>`
         });
 
-        html_string = html_string + `<button data-id=${this.id} id="edit-button" class="btn btn-outline-secondary">Edit</button>
+        html_string = html_string + `<button data-id=${this.id} id="edit-button${this.id}" class="btn btn-outline-secondary">Edit</button>
 
-        <button data-id=${this.id} id="delete-button" class="btn btn-outline-secondary">Delete</button>
+        <button data-id=${this.id} id="delete-button${this.id}" class="btn btn-outline-secondary">Delete</button>
 
         </div>
         <br><br>
