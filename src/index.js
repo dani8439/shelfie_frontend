@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   await getBooks()
 
 
-  // move .then for all of the below for tomorrow? 
-
-
   // creating event listener on submit event in browser
   document.querySelector("#create-book-form").addEventListener("submit", (e) => createFormHandler(e))
 
@@ -28,7 +25,6 @@ async function getBooks() {
   const response = await fetch(endPoint)
   const books = await response.json()
     books.data.forEach(book => {
-      // render(book)
       const newBook = new Book(book.id, book.attributes);
       document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
     })
