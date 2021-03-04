@@ -6,8 +6,6 @@ class Book {
     this.summary = bookAttributes.summary;
     this.quotes = bookAttributes.quotes
 
-    // console.log(this.quotes)
-    // for each inside of here.
     Book.all.push(this)
     // console.log(this);
   }

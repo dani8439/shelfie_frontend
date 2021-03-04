@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // listen for 'click' event on book container
   const bookContainer = document.querySelector('#book-container')
   bookContainer.addEventListener('click', e => {
-    // do not need to parseInt as already a string
     const id = e.target.dataset.id;
     const book = Book.findById(id);
     document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
@@ -57,11 +56,9 @@ function getBooks() {
   }
 
   // making post request to backend
-
   function postFetch(title, author, summary, quote1, quote2, quote3, quote4, quote5){
     console.log(title, author, summary, quote1, quote2, quote3, quote4, quote5)
      fetch(endPoint, {
-      // POST request
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
@@ -104,7 +101,6 @@ function getBooks() {
     e.preventDefault();
     const id = e.target.dataset.id;
     const book = Book.findById(id);
-    // debugger;
     const title = e.target.querySelector("#input-title").value;
     const author = e.target.querySelector("#input-author").value;
     const summary = e.target.querySelector("#input-summary").value;
