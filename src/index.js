@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Fetch is making a get request.
 async function getBooks() {
   // wait until fetch is done.
-  // because delete button was created by code but not until after ajax returned bookData.
+  // because delete button was created by code but not until after AJAX returned bookData.
   const response = await fetch(endPoint)
   const books = await response.json()
     books.data.forEach(book => {
