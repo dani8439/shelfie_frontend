@@ -93,7 +93,7 @@ function getBooks() {
 
       document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
     })
-    .then(location.reload())
+      .then(location.reload())
   }
 
   // Grab all the info from the updated Book
