@@ -39,6 +39,11 @@ class Book {
     return this.all.find(book => book.id === id);
   }
 
+  remove() {
+    const bookElement = document.getElementById(`book-wrapper${this.id}`)
+    bookElement.remove();
+  }
+
   // Book.all.forEach(book => (book.quotes.forEach(function(quote) { console.log( quote.id, quote.quote)})))
   // Book.all.forEach(book => book.quotes.forEach(function(quote) { console.log(book.title, quote.id, quote.quote)}))
 
