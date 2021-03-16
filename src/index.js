@@ -1,8 +1,12 @@
 const endPoint = "http://localhost:3000/api/v1/books"
 
 document.addEventListener('DOMContentLoaded', async () => {
+  // fetch and load books
+  // async await in order to create elements before attaching events to them so code doesn't get stuck.
   await getBooks()
 
+
+  // // listen for the submit event of the edit form and handle the data
   document.querySelector("#create-book-form").addEventListener("submit", (e) => createFormHandler(e))
   document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
   document.querySelector('#new-quote').addEventListener('submit', e => newQuoteHandler(e))
@@ -14,6 +18,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // Fetch is making a get request.
 async function getBooks() {
+  // wait until fetch is done.
+  // because delete button was created by code but not until after AJAX returned bookData.
   const response = await fetch(endPoint)
   const books = await response.json()
     books.data.forEach(book => {
@@ -78,7 +84,6 @@ async function getBooks() {
 
       document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
     })
-      .then(location.reload())
   }
 
   // Grab all the info from the updated Book
@@ -163,12 +168,39 @@ async function getBooks() {
     .then(updatedBook => console.log(updatedBook))
     // hacky to force reload the page with new quote. sledge hammer, how would YOU DO IT?
     .then(location.reload())
+    // getBooks() -- reload the data from the server, repopulate the div get new info without reloading the page.
     // creates an anonymous function that gets called when the .then happens.
     // need to research.
+    // doesn't work because reloading the page, and everything was forgotten.
     // .then(() => {
-    //   const element = document.querySelector(`book${book.id}`);
+    //   const element = document.querySelector(`#book${book.id}`);
     //   element.scrollIntoView();
     //   }
     // );
 
+  }
+
+
+  async function deleteBook(e) {
+    const bookId = e.srcElement.dataset.id;
+    const response = await fetch(`http://localhost:3000/api/v1/books/${bookId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    const resp = await response.json();
+    const book = Book.findById(bookId);
+    book.remove();
+    console.log('removed');
+  }
+
+  function editBook(e) {
+    const id = e.srcElement.dataset.id;
+    const book = Book.findById(id);
+    // debugger
+    // console.log(book);
+    document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
+    document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
   }
