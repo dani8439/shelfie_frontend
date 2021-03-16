@@ -5,6 +5,7 @@ class Book {
     this.author = bookAttributes.author;
     this.summary = bookAttributes.summary;
     this.quotes = bookAttributes.quotes
+
     Book.all.push(this)
     // console.log(this);
   }
@@ -26,8 +27,6 @@ class Book {
 
         html_string = html_string + `<button data-id=${this.id} id="edit-button${this.id}" class="btn btn-outline-secondary book-edit-button">Edit</button>
 
-        <button data-id=${this.id} id="delete-button${this.id}" class="btn btn-outline-secondary book-delete-button">Delete</button>
-
         </div>
         <br><br>
       </div>
@@ -38,7 +37,6 @@ class Book {
 
   static findById(id) {
     return this.all.find(book => book.id === id);
-    // parseInt(book.id) === id
   }
 
   remove() {

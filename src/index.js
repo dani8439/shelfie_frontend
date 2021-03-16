@@ -7,7 +7,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
   // creating event listener on submit event in browser
-  document.querySelector("#create-book-form").addEventListener("submit", (e) => createFormHandler(e))
+
+  createBookForm.addEventListener("submit", (e) => createFormHandler(e))
+
+  // listen for 'click' event on book container
+  const bookContainer = document.querySelector('#book-container')
+  bookContainer.addEventListener('click', e => {
+    const id = e.target.dataset.id;
+    const book = Book.findById(id);
+    document.querySelector('#update-book').innerHTML = book.renderUpdateForm();
+    document.querySelector('#new-quote').innerHTML = book.renderNewQuote();
+  });
 
   // // listen for the submit event of the edit form and handle the data
   document.querySelector('#update-book').addEventListener('submit', e => updateFormHandler(e))
@@ -49,11 +59,9 @@ async function getBooks() {
   }
 
   // making post request to backend
-
   function postFetch(title, author, summary, quote1, quote2, quote3, quote4, quote5){
     console.log(title, author, summary, quote1, quote2, quote3, quote4, quote5)
      fetch(endPoint, {
-      // POST request
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
@@ -87,9 +95,7 @@ async function getBooks() {
       let newBook = new Book(bookData, bookData.attributes)
 
       document.querySelector('#book-container').innerHTML += newBook.renderBookCard();
-
     })
-    // .catch(err => console.log(err))
   }
 
   // Grab all the info from the updated Book
@@ -97,7 +103,6 @@ async function getBooks() {
     e.preventDefault();
     const id = e.target.dataset.id;
     const book = Book.findById(id);
-    // debugger;
     const title = e.target.querySelector("#input-title").value;
     const author = e.target.querySelector("#input-author").value;
     const summary = e.target.querySelector("#input-summary").value;
@@ -120,7 +125,6 @@ async function getBooks() {
 
     patchBook(book, title, author, summary, newQuotes)
   }
-
 
 
 
