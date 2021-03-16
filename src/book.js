@@ -27,6 +27,8 @@ class Book {
 
         html_string = html_string + `<button data-id=${this.id} id="edit-button${this.id}" class="btn btn-outline-secondary book-edit-button">Edit</button>
 
+        <button data-id=${this.id} id="delete-button${this.id}" class="btn btn-outline-secondary book-delete-button">Delete</button>
+
         </div>
         <br><br>
       </div>
