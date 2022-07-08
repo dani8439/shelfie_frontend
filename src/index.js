@@ -1,6 +1,7 @@
 // const endPoint = "http://localhost:3000/api/v1/books"
-const endPoint = "https://shelfie-app-api.herokuapp.com/api/v1/books";
-// const endPoint = `${baseURL}/books`;
+const baseURL = "https://shelfie-app-api.herokuapp.com";
+// const endPoint = "https://shelfie-app-api.herokuapp.com/api/v1/books";
+const endPoint = `${baseURL}/api/v1/books`;
 
 document.addEventListener('DOMContentLoaded', async () => {
   // fetch and load books
