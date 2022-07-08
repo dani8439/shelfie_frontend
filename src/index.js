@@ -120,7 +120,8 @@ async function getBooks() {
 
   function patchBook(book, title, author, summary, newQuotes) {
     console.log(title, author, summary, newQuotes)
-    fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
+    // fetch(`http://localhost:3000/api/v1/books/${book.id}`, {
+    fetch(`${baseURL}/books/${book.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type' : 'application/json',
@@ -155,7 +156,8 @@ async function getBooks() {
 
   function postQuote(book, newQuote) {
     console.log(newQuote)
-    fetch(`http://localhost:3000/api/v1/books/${book.id}/quotes`, {
+    // fetch(`http://localhost:3000/api/v1/books/${book.id}/quotes`, {
+    fetch(`${baseURL}/books/${book.id}/quotes`, {
       method: 'POST',
       headers: {
         'Content-Type' : 'application/json',
@@ -185,7 +187,9 @@ async function getBooks() {
 
   async function deleteBook(e) {
     const bookId = e.srcElement.dataset.id;
-    const response = await fetch(`http://localhost:3000/api/v1/books/${bookId}`, {
+    // const response = await fetch(`http://localhost:3000/api/v1/books/${bookId}`, {
+    const response = await fetch(`${baseURL}/books/${bookId}`, {
+      
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
