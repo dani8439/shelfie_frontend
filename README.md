@@ -21,5 +21,5 @@ The backend is located here: https://github.com/dani8439/shelfie_backend
 7. Open `localhost:3000/api/v1/books` in your browser.
 8. CD into `shelfie_frontend`.
 9. Open the `index.html` file in your browser. Shelfie will be ready for you to use and save your favorite books. 
-10. 
+
 ![Screen Shot 2022-07-11 at 11 00 58 AM](https://user-images.githubusercontent.com/26771302/178295541-3e688534-3a6d-4c94-8f85-985104457c76.jpeg)
