@@ -4,6 +4,11 @@ A single page web application allowing a user to create a detailed summary of bo
 
 The app is built using a Rails API backend, and JavaScript, HTML, CSS, and Bootstrap for the frontend. The Rails API was created with a Postgres database.
 
+# Live Demo 
+To play with a live version of this project, you can go here: https://dani8439.github.io/shelfie_frontend/. The backend has been hosted online using heroku, and connected to the frontend through github pages. The instructions below are no longer applicable as some of the source code has been altered in order to facilitate a live demo of the site. 
+
+![Screen Shot 2022-07-11 at 11 00 45 AM](https://user-images.githubusercontent.com/26771302/178295494-881c3abb-3ac6-46a3-bea1-d83b32735f8f.jpeg)
+
 # How to use it
 The backend is located here: https://github.com/dani8439/shelfie_backend
 
@@ -16,3 +21,5 @@ The backend is located here: https://github.com/dani8439/shelfie_backend
 7. Open `localhost:3000/api/v1/books` in your browser.
 8. CD into `shelfie_frontend`.
 9. Open the `index.html` file in your browser. Shelfie will be ready for you to use and save your favorite books. 
+10. 
+![Screen Shot 2022-07-11 at 11 00 58 AM](https://user-images.githubusercontent.com/26771302/178295541-3e688534-3a6d-4c94-8f85-985104457c76.jpeg)
